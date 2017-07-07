@@ -22,7 +22,7 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
     MainActivity mainActivity;
 
     public listaMovimiento() {
-        // Required empty public constructor
+
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
