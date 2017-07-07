@@ -25,6 +25,7 @@ public class Movimiento extends AppCompatActivity{
 
     public float getFecha()
     {
+
         return Fecha;
 
     }
