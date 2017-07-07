@@ -1,37 +1,181 @@
 package com.example.claudiopc.trigar;
 
+
+
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
+
+/**
+ * Created by Usuario on 30/06/2017.
+ */
+
+public class MovimientoFragment extends Fragment implements View.OnClickListener {
+    Basededatos accesoBaseproyecto;
+    SQLiteDatabase baseDatos;
+    TextView txtFecha;
+    TextView txtLote;
+    TextView txtCantidad;
+    Switch EntradaSalida;
+    Boolean EntradaOSalida;
+    Spinner tipoGrano;
+    int Fecha;
+    String Lote;
+    int Cantidad;
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View Vista=inflater.inflate(R.layout.fragment_movimiento,container,false);
+        Button guardar=(Button)Vista.findViewById(R.id.botonGuardar);
+        guardar.setOnClickListener(this);
+        txtFecha=(TextView)Vista.findViewById(R.id.edFecha);
+        txtCantidad=(TextView)Vista.findViewById(R.id.edCant);
+        txtLote=(TextView) Vista.findViewById(R.id.edLote);
+        EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
+        return Vista;
+    }
+    @Override
+    public void onClick(View Vista) {
+        switch (Vista.getId()) {
+            case R.id.botonGuardar:
+        Fecha= Integer.parseInt(String.valueOf(txtFecha.getText()));
+                Lote=txtLote.getText().toString();
+        Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
+                EntradaOSalida=EntradaSalida.isChecked();
+                tipoGrano=(Spinner) Vista.findViewById(R.id.spGrano);
+
+                insertar(Fecha,Lote,Cantidad,EntradaOSalida,tipoGrano);
+                break;
+        }
+
+    }
+
+
+    public  void insertar (int Fecha, String Lote, int Cantidad,boolean EntradaOsalida,Spinner tipoGrano) {
+        if (baseDeDatosAbierta() == true) {
+            ContentValues nuevoRegistro;
+            nuevoRegistro = new ContentValues();
+            nuevoRegistro.put("Fecha", Fecha);
+            nuevoRegistro.put("Lote", Lote);
+            nuevoRegistro.put("Cantidad", Cantidad);
+            nuevoRegistro.put("EntradaSalida", EntradaOsalida?"E":"S");
+            //nuevoRegistro.put("Grano",tipoGrano);
+            baseDatos.insert("Movimiento", null, nuevoRegistro);
+        }
+        baseDatos.close();
+    }
+
+
+    private boolean baseDeDatosAbierta() {
+        boolean responder;
+        accesoBaseproyecto = new Basededatos(getActivity(), "Basededatos", null, 1);
+        baseDatos = accesoBaseproyecto.getWritableDatabase();
+        if (baseDatos != null) {
+            responder = true;
+        }
+        else {
+            responder = false;
+        }
+        return responder;
+
+    }
+}
+
+
+/*
+import android.app.FragmentManager;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 
-public class MovimientoFragment extends Fragment {
+public class Movimiento extends AppCompatActivity{
+    float Fecha;
+    float Lote;
+    int Cantidad;
+    String Grano;
 
-    public MovimientoFragment() {
-        // Required empty public constructor
+    public Movimiento(float Fecha , float Lote , int Cantidad , String Grano) {
+        this.Fecha = Fecha;
+        this.Lote = Lote;
+        this.Cantidad = Cantidad;
+        this.Grano = Grano;
     }
 
+    public float getFecha()
+    {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        return Fecha;
+
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movimiento, container, false);
+    public float getLote()
+    {
+        return Lote;
+
+    }
+    public int getCantidad()
+    {
+        return Cantidad;
+    }
+    public String getGrano()
+    {
+        return Grano;
+
     }
 
+    public void btnGuardar(View VistaR) {
+        EditText fecha = (EditText) VistaR.findViewById(R.id.edFecha);
+        String Fecha = fecha.getText().toString();
+
+        EditText lote = (EditText) VistaR.findViewById(R.id.edLote);
+        String Lote = fecha.getText().toString();
+
+        EditText cantidad = (EditText) VistaR.findViewById(R.id.edCant);
+        String Cantidad = fecha.getText().toString();
+        Integer cant = Integer.parseInt(Cantidad);
+
+
+        Spinner grano = (Spinner) VistaR.findViewById(R.id.spGrano);
+        String Grano = grano.getSelectedItem().toString();
+
+        Bundle paqueteDatos = new Bundle();
+        paqueteDatos.putString("Fecha", Fecha);
+        paqueteDatos.putString("Lote", Lote);
+        paqueteDatos.putInt("Cantidad", cant);
+        paqueteDatos.putString("Grano", Grano);
+        Intent IrAFragment = new Intent(VistaR.getContext(), listaMovimiento.class);
+        IrAFragment.putExtras(paqueteDatos);
+
+
+        listaMovimiento lm = new listaMovimiento();
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(android.R.id.content, lm, "UN_TAG");
+        tx.commit();
 
 
 
-
+    }
 
 }
+
+*/
+
+
+

@@ -3,6 +3,8 @@ package com.example.claudiopc.trigar;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,13 +57,13 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
             listamov = (ListView) v.findViewById(R.id.ListaMov);
             ArrayList<Movimiento> movimientos;
             movimientos = new ArrayList<>();
-            Movimiento m= new Movimiento((float)1.0, (float)1.0, 10, "Grano"); // float Fecha , float Lote , int Cantidad , String Grano
+            Movimiento m= new Movimiento(1,"lote", 10, "Trigo"); // float Fecha , float Lote , int Cantidad , String Grano
             movimientos.add(m);
-            m= new Movimiento((float)1.0, (float)1.0, 10, "Grano");
+              m= new Movimiento(1,"lote", 10, "Soja");
             movimientos.add(m);
-            m= new Movimiento((float)1.0, (float)1.0, 10, "Grano");
+              m= new Movimiento(1,"lote", 10, "Maiz");
             movimientos.add(m);
-            m= new Movimiento((float)1.0, (float)1.0, 10, "Grano");
+              m= new Movimiento(1,"lote", 15, "Grano");
             movimientos.add(m);
 
             MovimientosAdapter adapter = new MovimientosAdapter(getContext(), movimientos);
@@ -84,7 +86,6 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
                 PantallainicioFragment Pi = new PantallainicioFragment();
                 mainActivity.changeFragment(Pi);
                 break;
-
         }
 
     }
