@@ -18,7 +18,7 @@ android:background="@drawable/trigofondo">
         android:text="Cotizaciones" />
 
     <Button
-        android:id="@+id/botonVolver"
+        android:id="@+id/btnVolver5"
         android:onClick="btnGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

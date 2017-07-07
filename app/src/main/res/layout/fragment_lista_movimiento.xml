@@ -41,8 +41,8 @@ android:background="@drawable/trigofondo">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="250dp"
-        android:textSize="10dp"
-        android:text="Cargar Movimientos" />
+        android:text="Cargar Movimientos"
+        android:textSize="10dp" />
 
 
 </LinearLayout>

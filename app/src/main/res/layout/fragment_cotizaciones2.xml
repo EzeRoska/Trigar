@@ -11,7 +11,7 @@
         android:textSize="40dp"
         android:text="Cotizaciones" />
     <Button
-        android:id="@+id/botonVolver"
+        android:id="@+id/btnVolver6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="450dp"

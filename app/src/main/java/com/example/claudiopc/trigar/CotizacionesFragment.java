@@ -22,7 +22,7 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
         vistadevolver = inflater.inflate(R.layout.fragment_cotizaciones, container, false);
 
 
-        Button volver = (Button)vistadevolver.findViewById(R.id.botonVolver);
+        Button volver = (Button)vistadevolver.findViewById(R.id.btnVolver5);
         volver.setOnClickListener(this);
 
         return vistadevolver;
