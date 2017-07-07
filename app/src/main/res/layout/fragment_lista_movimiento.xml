@@ -1,0 +1,50 @@
+<LinearLayout  xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/rootRL"
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:background="@drawable/trigofondo">
+
+
+<TextView
+    android:id="@+id/textView15"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="10dp"
+    android:text="Listado Movimientos"
+    android:textSize="35dp" />
+
+    <ListView
+        android:id="@+id/ListaMov"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/transparent">
+
+
+    </ListView>
+
+    <Button
+        android:id="@+id/btnvolver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="290dp"
+        android:layout_marginTop="30dp"
+        android:textSize="10dp"
+        android:text="Volver" />
+
+    <Button
+        android:id="@+id/btnCargar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:textSize="10dp"
+        android:text="Cargar Movimientos" />
+
+
+</LinearLayout>
+
+
