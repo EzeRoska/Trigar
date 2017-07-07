@@ -80,16 +80,12 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
                  mainActivity.changeFragment(Mf);
                 break;
 
-        }
-        switch (v.getId())
-        {
             case R.id.btnvolver:
-                listaMovimiento Lm = new listaMovimiento();
-                mainActivity.changeFragment(Lm);
+                PantallainicioFragment Pi = new PantallainicioFragment();
+                mainActivity.changeFragment(Pi);
                 break;
+
         }
-
-
 
     }
 
