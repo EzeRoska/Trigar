@@ -9,18 +9,31 @@
 
 
     <TextView
-        android:id="@+id/importe"
+        android:id="@+id/campo0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:layout_marginTop="10dp"
-        android:text="Hola como estas " />
+        android:layout_marginTop="10dp" />
 
     <TextView
-        android:id="@+id/entrada_salida"
+        android:id="@+id/campo1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:layout_marginTop="15dp"
-        android:text=" " />
+        />
+    <TextView
+        android:id="@+id/campo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:layout_marginTop="15dp"
+        />
+    <TextView
+        android:id="@+id/campo3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:layout_marginTop="15dp"
+        />
 </LinearLayout>

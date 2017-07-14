@@ -14,49 +14,49 @@ import java.util.ArrayList;
  */
 
 public class MovimientosAdapter extends BaseAdapter{
-    Context context;
-    ArrayList<Movimiento> movimientos;
-    public MovimientosAdapter(Context context, ArrayList<Movimiento> movimientos) {
-        this.context = context;
-        this.movimientos = movimientos;
+    private Context _context;
+    private ArrayList<String> _movimientos;
+    public MovimientosAdapter(ArrayList<String> movimientos, Context context) {
+        _context = context;
+        _movimientos = movimientos;
     }
 
 
 
     @Override
     public int getCount() {
-        return movimientos.size();
+        return _movimientos.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return movimientos.get(position);
+    public String getItem(int position) {
+        String CampoadDevolver=_movimientos.get(position);
+        return CampoadDevolver;
     }
 
     @Override
     public long getItemId(int position) {
-        return position
-                ;
+        return position;
     }
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        if (view== null) {
-            LayoutInflater inflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.listview_item, viewGroup, false);
-        }
-         TextView importe= (TextView)view.findViewById(R.id.importe);
-         TextView entrada_salida = (TextView)view.findViewById(R.id.entrada_salida);
+        View VistaaDevolver;
+        LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        VistaaDevolver = inflater.inflate(R.layout.listview_item, viewGroup, false);
+
+         TextView importe= (TextView)VistaaDevolver.findViewById(R.id.campo0);
+         //TextView entrada_salida = (TextView)VistaaDevolver.findViewById(R.id.entrada_salida);
 
 
 
-        Movimiento m = movimientos.get(position);
-
-       importe.setText(String.valueOf(m.getCantidad()));
+        String m = _movimientos.get(position);
+       //importe.setText(String.valueOf(m.getCantidad()));
         //entrada_salida.setText(m.getEntrada_salida());
+        String PosicionActual = getItem(position);
+        importe.setText(PosicionActual);
 
-        return view;
+        return VistaaDevolver;
 
 
     }

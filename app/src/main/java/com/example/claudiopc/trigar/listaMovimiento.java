@@ -1,6 +1,8 @@
 package com.example.claudiopc.trigar;
 
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -43,35 +45,28 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
         String Grano = bundle.getString("Grano");
 
 
-
-
-
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_lista_movimiento, container, false);
         Button CargarMovs = (Button)v.findViewById(R.id.btnCargar);
-
         CargarMovs.setOnClickListener(this);
-
+        Button btnVolver = (Button)v.findViewById(R.id.btnvolverListaMovimiento);
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PantallainicioFragment PIf = new PantallainicioFragment();
+                mainActivity.changeFragment(PIf);
+            }
+        });
         ListView listamov;{
 
             listamov = (ListView) v.findViewById(R.id.ListaMov);
-            ArrayList<Movimiento> movimientos;
-            movimientos = new ArrayList<>();
-            Movimiento m= new Movimiento(1,"lote", 10, "Trigo"); // float Fecha , float Lote , int Cantidad , String Grano
-            movimientos.add(m);
-              m= new Movimiento(1,"lote", 10, "Soja");
-            movimientos.add(m);
-              m= new Movimiento(1,"lote", 10, "Maiz");
-            movimientos.add(m);
-              m= new Movimiento(1,"lote", 15, "Grano");
-            movimientos.add(m);
-
-            MovimientosAdapter adapter = new MovimientosAdapter(getContext(), movimientos);
+            MovimientosAdapter adapter = new MovimientosAdapter(mainActivity.mostrarCampos(), getContext());
             listamov.setAdapter(adapter);
             return v;
         }
 
     }
+
 
     @Override
     public void onClick(View v) {
@@ -80,11 +75,6 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
             case R.id.btnCargar:
                 MovimientoFragment Mf = new MovimientoFragment();
                  mainActivity.changeFragment(Mf);
-                break;
-
-            case R.id.btnvolver:
-                PantallainicioFragment Pi = new PantallainicioFragment();
-                mainActivity.changeFragment(Pi);
                 break;
         }
 

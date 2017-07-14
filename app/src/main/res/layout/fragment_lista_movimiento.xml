@@ -28,7 +28,7 @@ android:background="@drawable/trigofondo">
     </ListView>
 
     <Button
-        android:id="@+id/btnvolver"
+        android:id="@+id/btnvolverListaMovimiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="290dp"

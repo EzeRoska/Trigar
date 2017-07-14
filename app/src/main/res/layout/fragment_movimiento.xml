@@ -148,7 +148,7 @@
         android:text="Guardar" />
 
     <Button
-        android:id="@+id/btnVolver2"
+        android:id="@+id/btnVolverMovimiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="450dp"

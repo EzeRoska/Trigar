@@ -21,17 +21,20 @@ import android.widget.TextView;
  */
 
 public class MovimientoFragment extends Fragment implements View.OnClickListener {
-    Basededatos accesoBaseproyecto;
-    SQLiteDatabase baseDatos;
+
     TextView txtFecha;
     TextView txtLote;
     TextView txtCantidad;
     Switch EntradaSalida;
     Boolean EntradaOSalida;
-    Spinner tipoGrano;
+    Spinner txtGrano;
+    String tipoGrano;
     int Fecha;
     String Lote;
     int Cantidad;
+    SQLiteDatabase baseDatos;
+    Basededatos accesoBaseproyecto;
+    MainActivity activity;
 
 
     @Override
@@ -39,10 +42,19 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         View Vista=inflater.inflate(R.layout.fragment_movimiento,container,false);
         Button guardar=(Button)Vista.findViewById(R.id.botonGuardar);
         guardar.setOnClickListener(this);
+        Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMovimiento);
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PantallainicioFragment PIf = new PantallainicioFragment();
+                activity.changeFragment(PIf);
+            }
+        });
         txtFecha=(TextView)Vista.findViewById(R.id.edFecha);
         txtCantidad=(TextView)Vista.findViewById(R.id.edCant);
         txtLote=(TextView) Vista.findViewById(R.id.edLote);
         EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
+        txtGrano=(Spinner) Vista.findViewById(R.id.spGrano);
         return Vista;
     }
     @Override
@@ -53,8 +65,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
                 Lote=txtLote.getText().toString();
         Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
                 EntradaOSalida=EntradaSalida.isChecked();
-                tipoGrano=(Spinner) Vista.findViewById(R.id.spGrano);
-
+                tipoGrano=txtGrano.getSelectedItem().toString();
                 insertar(Fecha,Lote,Cantidad,EntradaOSalida,tipoGrano);
                 break;
         }
@@ -62,20 +73,19 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     }
 
 
-    public  void insertar (int Fecha, String Lote, int Cantidad,boolean EntradaOsalida,Spinner tipoGrano) {
-        if (baseDeDatosAbierta() == true) {
+    public  void insertar (int Fecha, String Lote, int Cantidad,boolean EntradaOsalida,String tipoGrano) {
+        if (baseDeDatosAbierta()) {
             ContentValues nuevoRegistro;
             nuevoRegistro = new ContentValues();
             nuevoRegistro.put("Fecha", Fecha);
             nuevoRegistro.put("Lote", Lote);
             nuevoRegistro.put("Cantidad", Cantidad);
             nuevoRegistro.put("EntradaSalida", EntradaOsalida?"E":"S");
-            //nuevoRegistro.put("Grano",tipoGrano);
+            nuevoRegistro.put("Grano",tipoGrano);
             baseDatos.insert("Movimiento", null, nuevoRegistro);
         }
         baseDatos.close();
     }
-
 
     private boolean baseDeDatosAbierta() {
         boolean responder;
