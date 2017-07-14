@@ -17,9 +17,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class listaMovimiento extends Fragment implements View.OnClickListener {
 
 
