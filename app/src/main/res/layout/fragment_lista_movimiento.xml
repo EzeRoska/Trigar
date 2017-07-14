@@ -22,7 +22,7 @@ android:background="@drawable/trigofondo">
         android:layout_height="300dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="30dp"
-        android:background="@android:color/transparent">
+        android:background="@android:color/white">
 
 
     </ListView>
