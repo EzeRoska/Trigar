@@ -4,7 +4,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 android:orientation="vertical"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
-android:background="@drawable/trigofondo">
+android:background="@drawable/trigofondo"
+    android:weightSum="1">
 
 
 <TextView
@@ -18,11 +19,13 @@ android:background="@drawable/trigofondo">
 
     <ListView
         android:id="@+id/ListaMov"
-        android:layout_width="250dp"
-        android:layout_height="300dp"
-        android:layout_marginLeft="50dp"
+        android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_marginTop="30dp"
-        android:background="@android:color/white">
+android:layout_weight="1"
+        android:background="@android:color/white"
+        >
 
 
     </ListView>
@@ -32,9 +35,8 @@ android:background="@drawable/trigofondo">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="290dp"
-        android:layout_marginTop="30dp"
-        android:textSize="10dp"
-        android:text="Volver" />
+        android:text="Volver"
+        android:textSize="10dp" />
 
     <Button
         android:id="@+id/btnCargar"

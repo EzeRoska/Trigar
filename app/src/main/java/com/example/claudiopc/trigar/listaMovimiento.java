@@ -43,7 +43,7 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
         String Grano = bundle.getString("Grano");
 
 
-        // Inflate the layout for this fragment
+
         View v = inflater.inflate(R.layout.fragment_lista_movimiento, container, false);
         Button CargarMovs = (Button)v.findViewById(R.id.btnCargar);
         CargarMovs.setOnClickListener(this);

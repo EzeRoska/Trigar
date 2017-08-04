@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Usuario on 30/06/2017.
@@ -44,10 +45,12 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         guardar.setOnClickListener(this);
         Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMovimiento);
         btnVolver.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 PantallainicioFragment PIf = new PantallainicioFragment();
                 activity.changeFragment(PIf);
+
             }
         });
         txtFecha=(TextView)Vista.findViewById(R.id.edFecha);
