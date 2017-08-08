@@ -56,6 +56,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
                 PantallainicioFragment PIf = new PantallainicioFragment();
                 activity.changeFragment(PIf);
 
+
             }
         });
         txtFecha=(TextView)Vista.findViewById(R.id.edFecha);
