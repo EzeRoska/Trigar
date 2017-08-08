@@ -5,6 +5,7 @@ package com.example.claudiopc.trigar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,10 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Date;
 
 /**
  * Created by Usuario on 30/06/2017.
@@ -30,12 +34,13 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     Boolean EntradaOSalida;
     Spinner txtGrano;
     String tipoGrano;
-    int Fecha;
+    String Fecha;
     String Lote;
     int Cantidad;
     SQLiteDatabase baseDatos;
     Basededatos accesoBaseproyecto;
     MainActivity activity;
+    CalendarView Calendario;
 
 
     @Override
@@ -58,25 +63,29 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         txtLote=(TextView) Vista.findViewById(R.id.edLote);
         EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
         txtGrano=(Spinner) Vista.findViewById(R.id.spGrano);
+        Calendario=(CalendarView) Vista.findViewById(R.id.Calendarioo);
         return Vista;
     }
     @Override
     public void onClick(View Vista) {
         switch (Vista.getId()) {
             case R.id.botonGuardar:
-        Fecha= Integer.parseInt(String.valueOf(txtFecha.getText()));
+                SimpleDateFormat calendario=new SimpleDateFormat("dd/MM/yyyy");
+                Fecha=calendario.format(new Date(Calendario.getDate()));
                 Lote=txtLote.getText().toString();
-        Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
+                Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
                 EntradaOSalida=EntradaSalida.isChecked();
                 tipoGrano=txtGrano.getSelectedItem().toString();
                 insertar(Fecha,Lote,Cantidad,EntradaOSalida,tipoGrano);
+                Toast toast = Toast.makeText(Fecha);
+                toast.show();
                 break;
         }
 
     }
 
 
-    public  void insertar (int Fecha, String Lote, int Cantidad,boolean EntradaOsalida,String tipoGrano) {
+    public  void insertar (String Fecha, String Lote, int Cantidad,boolean EntradaOsalida,String tipoGrano) {
         if (baseDeDatosAbierta()) {
             ContentValues nuevoRegistro;
             nuevoRegistro = new ContentValues();
