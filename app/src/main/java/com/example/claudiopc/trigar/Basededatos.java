@@ -15,6 +15,7 @@ public class Basededatos extends SQLiteOpenHelper {
     public  Basededatos(Context contexto, String nombre, SQLiteDatabase.CursorFactory fabrica, int Version){
         super(contexto,nombre,fabrica,Version);
     }
+
     @Override
     public void onCreate(SQLiteDatabase baseDeDatos)
     {
