@@ -154,7 +154,7 @@
         android:entries="@array/tipos_Granos"></Spinner>
 
     <CalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/Calendar"
         android:layout_width="234dp"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="100dp"

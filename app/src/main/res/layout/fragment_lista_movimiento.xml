@@ -32,7 +32,7 @@ android:layout_weight="1"
 
     <Button
         android:id="@+id/btnvolverListaMovimiento"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="290dp"
         android:text="Volver"
@@ -40,7 +40,7 @@ android:layout_weight="1"
 
     <Button
         android:id="@+id/btnCargar"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="250dp"
         android:text="Cargar Movimientos"

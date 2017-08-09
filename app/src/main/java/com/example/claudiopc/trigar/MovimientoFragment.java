@@ -5,6 +5,7 @@ package com.example.claudiopc.trigar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,10 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Usuario on 30/06/2017.
@@ -30,12 +35,13 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     Boolean EntradaOSalida;
     Spinner txtGrano;
     String tipoGrano;
-    int Fecha;
+    String Fecha;
     String Lote;
     int Cantidad;
     SQLiteDatabase baseDatos;
     Basededatos accesoBaseproyecto;
     MainActivity activity;
+    CalendarView calendari;
 
 
     @Override
@@ -43,13 +49,15 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         View Vista=inflater.inflate(R.layout.fragment_movimiento,container,false);
         Button guardar=(Button)Vista.findViewById(R.id.botonGuardar);
         guardar.setOnClickListener(this);
+        activity = (MainActivity)getActivity();
         Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMovimiento);
         btnVolver.setOnClickListener(new View.OnClickListener() {
 
+
             @Override
             public void onClick(View v) {
-                PantallainicioFragment PIf = new PantallainicioFragment();
-                activity.changeFragment(PIf);
+                listaMovimiento LMF = new listaMovimiento();
+                activity.changeFragment(LMF);
 
             }
         });
@@ -58,13 +66,15 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         txtLote=(TextView) Vista.findViewById(R.id.edLote);
         EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
         txtGrano=(Spinner) Vista.findViewById(R.id.spGrano);
+        calendari=(CalendarView) Vista.findViewById(R.id.Calendar);
         return Vista;
     }
     @Override
     public void onClick(View Vista) {
         switch (Vista.getId()) {
             case R.id.botonGuardar:
-        Fecha= Integer.parseInt(String.valueOf(txtFecha.getText()));
+                SimpleDateFormat calendario=new SimpleDateFormat("dd/MM/yyyy");
+                Fecha=calendario.format(new Date((calendari.getDate())));
                 Lote=txtLote.getText().toString();
         Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
                 EntradaOSalida=EntradaSalida.isChecked();
@@ -76,7 +86,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     }
 
 
-    public  void insertar (int Fecha, String Lote, int Cantidad,boolean EntradaOsalida,String tipoGrano) {
+    public  void insertar (String Fecha, String Lote, int Cantidad,boolean EntradaOsalida,String tipoGrano) {
         if (baseDeDatosAbierta()) {
             ContentValues nuevoRegistro;
             nuevoRegistro = new ContentValues();
