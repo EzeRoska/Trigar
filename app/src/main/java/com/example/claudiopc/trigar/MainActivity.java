@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -14,9 +15,24 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentTransaction Transacciones;
     FragmentManager Manejador;
+    ArrayList<String> datos = new ArrayList<>();
     Basededatos acceso;
+/*
+    public ArrayList<String> getDatos() {
+        return datos;
+    }
+
+    public void setDatos(ArrayList<String> datos) {
+        this.datos = datos;
+    }
+
+    public void addDatos(String datos) {
+        this.datos.add(datos);
+
+    }
+*/
     SQLiteDatabase bd;
-    ArrayList<String>Lista= new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void changeFragment(Fragment f) {
+
+        Log.d("FELIPE","changeFragment");
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
         tx.replace(android.R.id.content, f, "UN_TAG");
         tx.commit();
@@ -55,11 +73,17 @@ public class MainActivity extends AppCompatActivity {
         return false;
 
     }
-    ArrayList<String> mostrarCampos()
+    ArrayList<String> mostrarCampos(String filtro)
     {
+        ArrayList<String>Lista= new ArrayList<>();
         if (connectToDatabase())
         {
-            Cursor cursor = bd.rawQuery("SELECT Fecha, Grano,EntradaSalida,Cantidad,Lote FROM Movimiento", null);
+            Cursor cursor;
+            if (filtro.length() > 0 )
+                cursor = bd.rawQuery("SELECT Fecha, Grano,EntradaSalida,Cantidad,Lote FROM Movimiento where grano='"+filtro+"'", null);
+            else
+                cursor = bd.rawQuery("SELECT Fecha, Grano,EntradaSalida,Cantidad,Lote FROM Movimiento", null);
+
             if (cursor.moveToFirst()){
                 do {
                     int convert= cursor.getInt(0);

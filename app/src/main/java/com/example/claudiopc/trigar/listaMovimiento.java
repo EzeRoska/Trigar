@@ -29,17 +29,27 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
     MainActivity mainActivity;
     private EditText BuscarListView;
     public ListView listamov;
+    String filtro="";
     ArrayAdapter<String> adapter;
 
-    public listaMovimiento() {
-    }
+
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_lista_movimiento, container, false);
+
+        //RECEPCION DE BUNDLE.
+        Bundle bundle = new Bundle();
+        String Fecha = bundle.getString("Fecha");
+        String Lote = bundle.getString("Lote");
+        Integer Cantidad = bundle.getInt("Cantidad");
+        String Grano = bundle.getString("Grano");
+
         listamov = (ListView) v.findViewById(R.id.ListaMov);
         BuscarListView=(EditText)v.findViewById (R.id.filtroListView);
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,  );
-        listamov.setAdapter(adapter);
+        mainActivity = (MainActivity)getActivity();
+        //adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,  mainActivity.getDatos());
 
         BuscarListView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -50,7 +60,8 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                Adapter.getfilter().filter(s);
+                //adapter.getFilter().filter(s);
+                filtro=filtro+s;
             }
 
             @Override
@@ -58,44 +69,32 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
 
             }
         });
-        mainActivity = (MainActivity)getActivity();
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        //RECEPCION DE BUNDLE.
-        Bundle bundle = new Bundle();
-        String Fecha = bundle.getString("Fecha");
-        String Lote = bundle.getString("Lote");
-        Integer Cantidad = bundle.getInt("Cantidad");
-        String Grano = bundle.getString("Grano");
 
 
-
-        View v = inflater.inflate(R.layout.fragment_lista_movimiento, container, false);
-        Button CargarMovs = (Button)v.findViewById(R.id.btnCargar);
+        Button CargarMovs = (Button) v.findViewById(R.id.btnCargar);
         CargarMovs.setOnClickListener(this);
-        Button btnVolver = (Button)v.findViewById(R.id.btnvolverListaMovimiento);
-        btnVolver.setOnClickListener(new View.OnClickListener() {
+        Button btnVolver = (Button) v.findViewById(R.id.btnvolverListaMovimiento);
+        btnVolver.setOnClickListener(new View.OnClickListener()
+
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick (View v){
                 PantallainicioFragment PIf = new PantallainicioFragment();
                 mainActivity.changeFragment(PIf);
             }
         });
-        ListView listamov;{
+        ListView listamov;
+
+        {
 
             listamov = (ListView) v.findViewById(R.id.ListaMov);
-            MovimientosAdapter adapter = new MovimientosAdapter(mainActivity.mostrarCampos(), getContext());
+            MovimientosAdapter adapter = new MovimientosAdapter(mainActivity.mostrarCampos(filtro), getContext());
 
             listamov.setAdapter(adapter);
             return v;
         }
-
-
     }
+
 
 
     @Override
@@ -104,7 +103,7 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
         {
             case R.id.btnCargar:
                 MovimientoFragment Mf = new MovimientoFragment();
-                 mainActivity.changeFragment(Mf);
+                mainActivity.changeFragment(Mf);
                 break;
         }
 

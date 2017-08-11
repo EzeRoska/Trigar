@@ -4,6 +4,7 @@ package com.example.claudiopc.trigar;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
@@ -21,6 +22,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -82,14 +84,68 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
             }
         });
         txtFecha=(TextView)Vista.findViewById(R.id.edFecha);
-        
+
         txtCantidad=(TextView)Vista.findViewById(R.id.edCant);
         txtLote=(TextView) Vista.findViewById(R.id.edLote);
         EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
         txtGrano=(Spinner) Vista.findViewById(R.id.spGrano);
         calendari=(CalendarView) Vista.findViewById(R.id.Calendar);
+        MainActivity myParent = (MainActivity)getActivity();
+/*
+        String Fecha ="como recibo mis datos de la BD, ";
+        myParent.addDatos(Fecha);
+        String Lote = "";
+        myParent.addDatos(Lote);
+        String Cantidad = "";
+        myParent.addDatos(Cantidad);
+        String tipoGrano = "";
+        myParent.addDatos(tipoGrano);
+        String EntradaOSalida = "";
+        myParent.addDatos(EntradaOSalida);
+*/
         return Vista;
     }
+    /*public void SelectBD()
+
+    {
+        if(baseDeDatosAbierta() == true)
+        {
+            Cursor conjuntoderegistros;
+            conjuntoderegistros=baseDatos.rawQuery("select * from Movimiento",null);
+            if(conjuntoderegistros.moveToFirst()==true){
+                int cantidadregistros=0;
+                do {
+                    cantidadregistros++;
+
+                    String Fechaa=conjuntoderegistros.getString(0);
+                    listaMovimiento Objeto = new listaMovimiento();
+                    Objeto.adapter.add(Fechaa);
+
+                        String Lotee=conjuntoderegistros.getString(1);
+                     Objeto = new listaMovimiento();
+                    Objeto.adapter.add(Lotee);
+
+                    String Granoo=conjuntoderegistros.getString(2);
+                     Objeto = new listaMovimiento();
+                    Objeto.adapter.add(Granoo);
+
+                    String Cantidadd=conjuntoderegistros.getString(3);
+                     Objeto = new listaMovimiento();
+                    Objeto.adapter.add(Cantidadd);
+
+                    String EntradaSalidaa=conjuntoderegistros.getString(4);
+                     Objeto = new listaMovimiento();
+                    Objeto.adapter.add(EntradaSalidaa);
+                }
+                while (conjuntoderegistros.moveToNext()==true);
+            }
+        }
+    }*/
+
+
+
+
+
     @Override
     public void onClick(View Vista) {
         Log.d("probando", "clickeado" + Vista.getId());
