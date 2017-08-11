@@ -7,10 +7,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -22,14 +27,38 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
 
 
     MainActivity mainActivity;
+    private EditText BuscarListView;
+    public ListView listamov;
+    ArrayAdapter<String> adapter;
 
     public listaMovimiento() {
-
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        listamov = (ListView) v.findViewById(R.id.ListaMov);
+        BuscarListView=(EditText)v.findViewById (R.id.filtroListView);
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,  );
+
+        BuscarListView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                Adapter.getfilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         mainActivity = (MainActivity)getActivity();
+
     }
 
     @Override
@@ -59,6 +88,7 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
 
             listamov = (ListView) v.findViewById(R.id.ListaMov);
             MovimientosAdapter adapter = new MovimientosAdapter(mainActivity.mostrarCampos(), getContext());
+
             listamov.setAdapter(adapter);
             return v;
         }

@@ -9,6 +9,8 @@ import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +54,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         guardar.setOnClickListener(this);
         activity = (MainActivity)getActivity();
         Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMovimiento);
+        Button btnGuardar = (Button)Vista.findViewById(R.id.botonGuardar);
         btnVolver.setOnClickListener(new View.OnClickListener() {
 
 
@@ -63,7 +66,23 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
 
             }
         });
+
+        btnGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SimpleDateFormat calendario=new SimpleDateFormat("dd/MM/yyyy");
+                Fecha=calendario.format(new Date((calendari.getDate())));
+                Log.d("probando", Fecha);
+                Log.d("proband", "aa");
+                Lote=txtLote.getText().toString();
+                Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
+                EntradaOSalida=EntradaSalida.isChecked();
+                tipoGrano=txtGrano.getSelectedItem().toString();
+                insertar(calendario.getCalendar().getTime(),Lote,Cantidad,EntradaOSalida,tipoGrano);
+            }
+        });
         txtFecha=(TextView)Vista.findViewById(R.id.edFecha);
+        
         txtCantidad=(TextView)Vista.findViewById(R.id.edCant);
         txtLote=(TextView) Vista.findViewById(R.id.edLote);
         EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
@@ -73,26 +92,30 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     }
     @Override
     public void onClick(View Vista) {
+        Log.d("probando", "clickeado" + Vista.getId());
         switch (Vista.getId()) {
             case R.id.botonGuardar:
                 SimpleDateFormat calendario=new SimpleDateFormat("dd/MM/yyyy");
                 Fecha=calendario.format(new Date((calendari.getDate())));
+                Log.d("probando", Fecha);
+                Log.d("proband", "aa");
                 Lote=txtLote.getText().toString();
         Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
                 EntradaOSalida=EntradaSalida.isChecked();
                 tipoGrano=txtGrano.getSelectedItem().toString();
-                insertar(Fecha,Lote,Cantidad,EntradaOSalida,tipoGrano);
+                insertar(calendario.getCalendar().getTime(),Lote,Cantidad,EntradaOSalida,tipoGrano);
                 break;
         }
 
     }
 
 
-    public  void insertar (String Fecha, String Lote, int Cantidad,boolean EntradaOsalida,String tipoGrano) {
+    public  void insertar (Date Fecha, String Lote, int Cantidad,boolean EntradaOsalida,String tipoGrano) {
         if (baseDeDatosAbierta()) {
             ContentValues nuevoRegistro;
             nuevoRegistro = new ContentValues();
-            nuevoRegistro.put("Fecha", Fecha);
+            String dateFacDB = DateFormat.format("dd.MM.yyyy", Fecha).toString();
+            nuevoRegistro.put("Fecha", dateFacDB);
             nuevoRegistro.put("Lote", Lote);
             nuevoRegistro.put("Cantidad", Cantidad);
             nuevoRegistro.put("EntradaSalida", EntradaOsalida?"E":"S");

@@ -8,22 +8,20 @@ android:background="@drawable/trigofondo"
     android:weightSum="1">
 
 
-<TextView
-    android:id="@+id/textView15"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="30dp"
-    android:layout_marginTop="10dp"
-    android:text="Listado Movimientos"
-    android:textSize="35dp" />
+    <EditText
+        android:id="@+id/filtroListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
 
     <ListView
         android:id="@+id/ListaMov"
         android:layout_width="match_parent"
- android:layout_height="wrap_content"
+ android:layout_height="370dp"
         android:layout_margin="10dp"
         android:layout_marginTop="30dp"
-android:layout_weight="1"
         android:background="@android:color/white"
         >
 
