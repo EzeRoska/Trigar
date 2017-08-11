@@ -39,6 +39,7 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
         listamov = (ListView) v.findViewById(R.id.ListaMov);
         BuscarListView=(EditText)v.findViewById (R.id.filtroListView);
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,  );
+        listamov.setAdapter(adapter);
 
         BuscarListView.addTextChangedListener(new TextWatcher() {
             @Override
