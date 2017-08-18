@@ -2,6 +2,7 @@ package com.example.claudiopc.trigar;
 
 
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -17,18 +18,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by Usuario on 30/06/2017.
- */
 
 public class MovimientoFragment extends Fragment implements View.OnClickListener {
 
@@ -39,21 +39,22 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     Boolean EntradaOSalida;
     Spinner txtGrano;
     String tipoGrano;
-    String Fecha;
+    String  Fecha;
     String Lote;
     int Cantidad;
     SQLiteDatabase baseDatos;
     Basededatos accesoBaseproyecto;
     MainActivity activity;
-    CalendarView calendari;
-
+    Calendar peti;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View Vista=inflater.inflate(R.layout.fragment_movimiento,container,false);
-        Button guardar=(Button)Vista.findViewById(R.id.botonGuardar);
-        guardar.setOnClickListener(this);
+        Button Calendario = (Button) Vista.findViewById(R.id.BotonCalendario);
+        Calendario.setOnClickListener(this);
+       // Button guardar=(Button)Vista.findViewById(R.id.botonGuardar);
+        //guardar.setOnClickListener(this);
         activity = (MainActivity)getActivity();
         Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMovimiento);
         Button btnGuardar = (Button)Vista.findViewById(R.id.botonGuardar);
@@ -69,28 +70,27 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
             }
         });
 
+
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleDateFormat calendario=new SimpleDateFormat("dd/MM/yyyy");
-                Fecha=calendario.format(new Date((calendari.getDate())));
-                Log.d("probando", Fecha);
-                Log.d("proband", "aa");
                 Lote=txtLote.getText().toString();
                 Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
                 EntradaOSalida=EntradaSalida.isChecked();
                 tipoGrano=txtGrano.getSelectedItem().toString();
-                insertar(calendario.getCalendar().getTime(),Lote,Cantidad,EntradaOSalida,tipoGrano);
+                insertar(Fecha,Lote,Cantidad,EntradaOSalida,tipoGrano);
+
             }
         });
-        txtFecha=(TextView)Vista.findViewById(R.id.edFecha);
+
 
         txtCantidad=(TextView)Vista.findViewById(R.id.edCant);
         txtLote=(TextView) Vista.findViewById(R.id.edLote);
         EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
         txtGrano=(Spinner) Vista.findViewById(R.id.spGrano);
-        calendari=(CalendarView) Vista.findViewById(R.id.Calendar);
         MainActivity myParent = (MainActivity)getActivity();
+        peti = Calendar.getInstance();
+        peti.add(Calendar.DATE,1);
 /*
         String Fecha ="como recibo mis datos de la BD, ";
         myParent.addDatos(Fecha);
@@ -103,6 +103,8 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         String EntradaOSalida = "";
         myParent.addDatos(EntradaOSalida);
 */
+       // Calendario=(CalendarView) Vista.findViewById(R.id.Calendarioo);
+
         return Vista;
     }
     /*public void SelectBD()
@@ -150,28 +152,39 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     public void onClick(View Vista) {
         Log.d("probando", "clickeado" + Vista.getId());
         switch (Vista.getId()) {
+            case R.id.BotonCalendario:
+                DatePickerDialog dp = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        peti.set(year,month,dayOfMonth);
+                        Fecha = peti.get(Calendar.DAY_OF_MONTH) + "/" + peti.get(Calendar.MONTH)+ "/"+ peti.get(Calendar.YEAR);
+
+                    }
+                },peti.get(Calendar.DAY_OF_MONTH),peti.get(Calendar.MONTH),peti.get(Calendar.YEAR));
+                dp.getDatePicker().setMinDate(peti.getTimeInMillis());
+                dp.show();
+                break;
+
             case R.id.botonGuardar:
-                SimpleDateFormat calendario=new SimpleDateFormat("dd/MM/yyyy");
-                Fecha=calendario.format(new Date((calendari.getDate())));
-                Log.d("probando", Fecha);
-                Log.d("proband", "aa");
                 Lote=txtLote.getText().toString();
-        Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
+                Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
                 EntradaOSalida=EntradaSalida.isChecked();
                 tipoGrano=txtGrano.getSelectedItem().toString();
-                insertar(calendario.getCalendar().getTime(),Lote,Cantidad,EntradaOSalida,tipoGrano);
+                insertar(Fecha , Lote ,Cantidad, EntradaOSalida, tipoGrano);
+
                 break;
         }
 
     }
 
 
-    public  void insertar (Date Fecha, String Lote, int Cantidad,boolean EntradaOsalida,String tipoGrano) {
+
+    public  void insertar (String Fecha, String Lote, int Cantidad,boolean EntradaOsalida,String tipoGrano) {
+
         if (baseDeDatosAbierta()) {
             ContentValues nuevoRegistro;
             nuevoRegistro = new ContentValues();
-            String dateFacDB = DateFormat.format("dd.MM.yyyy", Fecha).toString();
-            nuevoRegistro.put("Fecha", dateFacDB);
+            nuevoRegistro.put("Fecha", Fecha);
             nuevoRegistro.put("Lote", Lote);
             nuevoRegistro.put("Cantidad", Cantidad);
             nuevoRegistro.put("EntradaSalida", EntradaOsalida?"E":"S");

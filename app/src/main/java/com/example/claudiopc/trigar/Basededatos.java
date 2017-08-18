@@ -6,10 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
-/**
- * Created by Usuario on 30/06/2017.
- */
-
 public class Basededatos extends SQLiteOpenHelper {
 
     public  Basededatos(Context contexto, String nombre, SQLiteDatabase.CursorFactory fabrica, int Version){
@@ -30,6 +26,8 @@ public class Basededatos extends SQLiteOpenHelper {
         Log.d("SQLite","Declaro e inicializo la variable para crear la tabla Movimiento");
         String sqlCrearTablaMovimiento;
         sqlCrearTablaMovimiento=" create table Movimiento(Id integer, Fecha string, Grano text,EntradaSalida text,Cantidad integer,Lote text)";
+        sqlCrearTablaMovimiento=" create table Movimiento(Id integer, Fecha text, Grano text,EntradaSalida text,Cantidad integer,Lote text)";
+
 
         Log.d("SQLite","invoca al creador de la tabla");
         baseDeDatos.execSQL(sqlCrearTablaMovimiento);
@@ -38,6 +36,7 @@ public class Basededatos extends SQLiteOpenHelper {
         Log.d("SQLite","Declaro e inicializo la variable para crear la tabla Cotizaciones");
         String sqlCrearTablaCotizaciones;
         sqlCrearTablaCotizaciones=" create table Cotizaciones(Id integer, Fecha integer, Importe integer,Tipo boolean)";
+
 
         Log.d("SQLite","invoca al creador de la tabla");
         baseDeDatos.execSQL(sqlCrearTablaCotizaciones);
