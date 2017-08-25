@@ -53,11 +53,10 @@ public class MovimientosAdapter extends BaseAdapter{
         TextView entrada_salida = (TextView)VistaaDevolver.findViewById(R.id.campoEntradaSalida);
 
         Movimiento m = _movimientos.get(position);
-      //En donde dice cantidad tengo que poner los 5 campos correspondientes .
         Fecha.setText(m.getFecha());
         Lote.setText(m.getLote());
         Grano.setText(m.getgrano());
-        Cantidad.setText(m.getCantidad());
+        Cantidad.setText(Integer.toString(m.getCantidad()));
         entrada_salida.setText(m.getEntradaSalida());
 
 
