@@ -57,8 +57,6 @@ public class AdapterLisWiewdeta extends BaseAdapter {
         TextView Titulo5 = (TextView)VistaaDevolver.findViewById(R.id.Nombre5);
 
 
-
-
         String TextoposicionActual = getItem(PosicionActual);
         Titulo1.setText(TextoposicionActual);
         Titulo2.setText(TextoposicionActual);
