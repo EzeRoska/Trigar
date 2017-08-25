@@ -45,6 +45,7 @@ public class MovimientosAdapter extends BaseAdapter{
         LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         VistaaDevolver = inflater.inflate(R.layout.listview_item, viewGroup, false);
 
+        //Aca tengo que poner en inporte el campo correspondiente a cada uno de los 5 campos.
          TextView importe0= (TextView)VistaaDevolver.findViewById(R.id.campo0);
         TextView importe1 =(TextView) VistaaDevolver.findViewById(R.id.campo1);
         TextView importe2 =(TextView)VistaaDevolver.findViewById(R.id.campo2);
@@ -55,9 +56,7 @@ public class MovimientosAdapter extends BaseAdapter{
 
 
         Movimiento m = _movimientos.get(position);
-       //importe.setText(String.valueOf(m.getCantidad()));
-        //entrada_salida.setText(m.getEntrada_salida());
-       // String PosicionActual = getItem(position);
+      //En donde dice cantidad tengo que poner los 5 campos correspondientes .
         importe0.setText(m.getCantidad());
         importe1.setText(m.getCantidad());
         importe2.setText(m.getCantidad());

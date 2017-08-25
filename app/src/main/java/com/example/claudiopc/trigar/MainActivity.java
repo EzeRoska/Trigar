@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
     ArrayList<Movimiento> mostrarCampos(String filtro)
     {
-        ArrayList<Movimiento>Lista= new ArrayList<>();
+        ArrayList<Movimiento> Lista= new ArrayList<>();
         Movimiento m;
         if (connectToDatabase())
         {
@@ -94,9 +94,8 @@ public class MainActivity extends AppCompatActivity {
                     String EntradaSalida = cursor.getString(4);
 
 
-
-                   // m = Lista<>(fecha,Lote,grano,Cantidad,EntradaSalida);
-                    //Lista.add(m);
+                    m = new Movimiento (fecha,Lote,grano,Cantidad,EntradaSalida);
+                    Lista.add(m);
 
 
 

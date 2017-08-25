@@ -19,23 +19,25 @@ public class Movimiento  {
     String Fecha;
     String Lote;
     int Cantidad;
-    String grano;
+    String Grano;
+    String EntradaSalid;
 
     public Movimiento() {
         // Required empty public constructor
     }
 
-    public Movimiento(String fecha, String lote, int cantidad, String grano) {
+    public Movimiento(String fecha, String lote,String grano, int cantidad, String EntradaSalida) {
         Fecha = fecha;
         Lote = lote;
+        Grano = grano;
         Cantidad = cantidad;
-        this.grano = grano;
+        EntradaSalid = EntradaSalida;
+        //this.grano = grano;
     }
 
     public String getFecha() {
         return Fecha;
     }
-
     public void setFecha(String fecha) {
         Fecha = fecha;
     }
@@ -43,26 +45,23 @@ public class Movimiento  {
     public String getLote() {
         return Lote;
     }
-
     public void setLote(String lote) {
         Lote = lote;
     }
 
-    public int getCantidad() {
-        return Cantidad;
-    }
+    public String getgrano() {return Grano;}
+    public void setGrano (String grano) {Grano = grano;}
 
-    public void setCantidad(int cantidad) {
-        Cantidad = cantidad;
-    }
+    public int getCantidad() {return Cantidad;}
+    public void setCantidad(int cantidad) {Cantidad = cantidad;}
 
-    public String getGrano() {
-        return grano;
-    }
+    public String getEntradaSalida(){return EntradaSalid;}
+    public void setEntradaSalid(String EntradaSalida ) {EntradaSalid = EntradaSalida;}
 
-    public void setGrano(String grano) {
-        this.grano = grano;
-    }
+
+
+
+
 }
 
 
