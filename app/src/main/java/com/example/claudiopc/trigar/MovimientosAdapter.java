@@ -64,6 +64,7 @@ public class MovimientosAdapter extends BaseAdapter{
         importe3.setText(m.getCantidad());
         importe4.setText(m.getCantidad());
 
+
         return VistaaDevolver;
 
 
