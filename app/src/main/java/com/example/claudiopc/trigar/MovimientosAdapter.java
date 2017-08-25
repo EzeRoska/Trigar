@@ -46,22 +46,19 @@ public class MovimientosAdapter extends BaseAdapter{
         VistaaDevolver = inflater.inflate(R.layout.listview_item, viewGroup, false);
 
         //Aca tengo que poner en inporte el campo correspondiente a cada uno de los 5 campos.
-         TextView importe0= (TextView)VistaaDevolver.findViewById(R.id.campo0);
-        TextView importe1 =(TextView) VistaaDevolver.findViewById(R.id.campo1);
-        TextView importe2 =(TextView)VistaaDevolver.findViewById(R.id.campo2);
-        TextView importe3 =(TextView)VistaaDevolver.findViewById(R.id.campo3);
-        TextView importe4 = (TextView)VistaaDevolver.findViewById(R.id.campo4);
-         //TextView entrada_salida = (TextView)VistaaDevolver.findViewById(R.id.entrada_salida);
-
-
+         TextView Fecha= (TextView)VistaaDevolver.findViewById(R.id.campoFecha);
+        TextView Lote =(TextView) VistaaDevolver.findViewById(R.id.campoLote);
+        TextView Grano =(TextView)VistaaDevolver.findViewById(R.id.campoGrano);
+        TextView Cantidad =(TextView)VistaaDevolver.findViewById(R.id.campoCantidad);
+        TextView entrada_salida = (TextView)VistaaDevolver.findViewById(R.id.campoEntradaSalida);
 
         Movimiento m = _movimientos.get(position);
       //En donde dice cantidad tengo que poner los 5 campos correspondientes .
-        importe0.setText(m.getCantidad());
-        importe1.setText(m.getCantidad());
-        importe2.setText(m.getCantidad());
-        importe3.setText(m.getCantidad());
-        importe4.setText(m.getCantidad());
+        Fecha.setText(m.getFecha());
+        Lote.setText(m.getLote());
+        Grano.setText(m.getgrano());
+        Cantidad.setText(m.getCantidad());
+        entrada_salida.setText(m.getEntradaSalida());
 
 
         return VistaaDevolver;
