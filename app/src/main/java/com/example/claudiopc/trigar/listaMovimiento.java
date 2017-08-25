@@ -13,10 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -32,8 +34,6 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
     String filtro="";
     ArrayAdapter<String> adapter;
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,14 +47,18 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
         String Grano = bundle.getString("Grano");
 
         listamov = (ListView) v.findViewById(R.id.ListaMov);
-        BuscarListView=(EditText)v.findViewById (R.id.filtroListView);
+        BuscarListView = (EditText) v.findViewById(R.id.filtroListView);
         mainActivity = (MainActivity)getActivity();
+
         //adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,  mainActivity.getDatos());
 
+       //Aca estoy activando el filtro de busqueda.
         BuscarListView.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+                listaMovimiento.this.adapter.getFilter().filter(s);
             }
 
             @Override
@@ -68,6 +72,7 @@ public class listaMovimiento extends Fragment implements View.OnClickListener {
             public void afterTextChanged(Editable s) {
 
             }
+
         });
 
 

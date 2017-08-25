@@ -8,25 +8,21 @@ android:background="@drawable/trigofondo"
     android:weightSum="1">
 
 
-    <EditText
-        android:id="@+id/filtroListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
-
     <ListView
         android:id="@+id/ListaMov"
         android:layout_width="match_parent"
- android:layout_height="370dp"
+        android:layout_height="370dp"
         android:layout_margin="10dp"
         android:layout_marginTop="30dp"
-        android:background="@android:color/white"
-        >
+        android:background="@android:color/white">
 
 
     </ListView>
+
+    <EditText
+        android:id="@+id/filtroListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnvolverListaMovimiento"
@@ -39,7 +35,7 @@ android:background="@drawable/trigofondo"
     <Button
         android:id="@+id/btnCargar"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="250dp"
         android:text="Cargar Movimientos"
         android:textSize="10dp" />

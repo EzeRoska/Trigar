@@ -73,19 +73,31 @@ public class MainActivity extends AppCompatActivity {
         return false;
 
     }
-    ArrayList<String> mostrarCampos(String filtro)
+    ArrayList<Movimiento> mostrarCampos(String filtro)
     {
-        ArrayList<String>Lista= new ArrayList<>();
+        ArrayList<Movimiento>Lista= new ArrayList<>();
+        Movimiento m;
         if (connectToDatabase())
         {
             Cursor cursor;
             if (filtro.length() > 0 )
                 cursor = bd.rawQuery("SELECT Fecha, Grano,EntradaSalida,Cantidad,Lote FROM Movimiento where grano='"+filtro+"'", null);
             else
-                cursor = bd.rawQuery("SELECT Fecha, Grano,EntradaSalida,Cantidad,Lote FROM Movimiento", null);
+                cursor = bd.rawQuery("SELECT Fecha, Lote,Grano, Cantidad, EntradaSalida FROM Movimiento", null);
 
             if (cursor.moveToFirst()){
                 do {
+                    String fecha = cursor.getString(0);
+                    String Lote = cursor.getString(1);
+                    String grano = cursor.getString(2);
+                    int Cantidad =cursor.getInt(3);
+                    String EntradaSalida = cursor.getString(4);
+
+
+
+                    m = Lista<>(fecha,Lote,grano,Cantidad,EntradaSalida);
+                    Lista.add(m);
+                    /*
                     int convert= cursor.getInt(0);
                     String Fechas = String.valueOf(convert);
                     Lista.add(Fechas);
@@ -95,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     String Cantidades = String.valueOf(convert2);
                     Lista.add(Cantidades);
                     Lista.add(cursor.getString(4));
+                    */
                 }while (cursor.moveToNext());
             }
 

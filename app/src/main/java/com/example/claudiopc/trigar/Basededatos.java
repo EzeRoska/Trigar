@@ -25,7 +25,7 @@ public class Basededatos extends SQLiteOpenHelper {
 
         Log.d("SQLite","Declaro e inicializo la variable para crear la tabla Movimiento");
         String sqlCrearTablaMovimiento;
-        sqlCrearTablaMovimiento=" create table Movimiento(Id integer, Fecha string, Grano text,EntradaSalida text,Cantidad integer,Lote text)";
+        //sqlCrearTablaMovimiento=" create table Movimiento(Id integer, Fecha string, Grano text,EntradaSalida text,Cantidad integer,Lote text)";
         sqlCrearTablaMovimiento=" create table Movimiento(Id integer, Fecha text, Grano text,EntradaSalida text,Cantidad integer,Lote text)";
 
 

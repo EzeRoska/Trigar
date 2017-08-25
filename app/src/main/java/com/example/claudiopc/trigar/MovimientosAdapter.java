@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class MovimientosAdapter extends BaseAdapter{
     private Context _context;
-    private ArrayList<String> _movimientos;
-    public MovimientosAdapter(ArrayList<String> movimientos, Context context) {
+    private ArrayList<Movimiento> _movimientos;
+    public MovimientosAdapter(ArrayList<Movimiento> movimientos, Context context) {
         _context = context;
         _movimientos = movimientos;
     }
@@ -29,9 +29,9 @@ public class MovimientosAdapter extends BaseAdapter{
     }
 
     @Override
-    public String getItem(int position) {
-        String CampoadDevolver=_movimientos.get(position);
-        return CampoadDevolver;
+    public Movimiento getItem(int position) {
+        return _movimientos.get(position);
+        //return CampoadDevolver;
     }
 
     @Override
@@ -50,11 +50,11 @@ public class MovimientosAdapter extends BaseAdapter{
 
 
 
-        String m = _movimientos.get(position);
+        Movimiento m = _movimientos.get(position);
        //importe.setText(String.valueOf(m.getCantidad()));
         //entrada_salida.setText(m.getEntrada_salida());
-        String PosicionActual = getItem(position);
-        importe.setText(PosicionActual);
+       // String PosicionActual = getItem(position);
+        importe.setText(m.getCantidad());
 
         return VistaaDevolver;
 
