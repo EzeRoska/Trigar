@@ -95,8 +95,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                    m = Lista<>(fecha,Lote,grano,Cantidad,EntradaSalida);
-                    Lista.add(m);
+                   // m = Lista<>(fecha,Lote,grano,Cantidad,EntradaSalida);
+                    //Lista.add(m);
+
+
+
                     /*
                     int convert= cursor.getInt(0);
                     String Fechas = String.valueOf(convert);
