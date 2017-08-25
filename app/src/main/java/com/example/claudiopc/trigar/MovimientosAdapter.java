@@ -45,7 +45,11 @@ public class MovimientosAdapter extends BaseAdapter{
         LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         VistaaDevolver = inflater.inflate(R.layout.listview_item, viewGroup, false);
 
-         TextView importe= (TextView)VistaaDevolver.findViewById(R.id.campo0);
+         TextView importe0= (TextView)VistaaDevolver.findViewById(R.id.campo0);
+        TextView importe1 =(TextView) VistaaDevolver.findViewById(R.id.campo1);
+        TextView importe2 =(TextView)VistaaDevolver.findViewById(R.id.campo2);
+        TextView importe3 =(TextView)VistaaDevolver.findViewById(R.id.campo3);
+        TextView importe4 = (TextView)VistaaDevolver.findViewById(R.id.campo4);
          //TextView entrada_salida = (TextView)VistaaDevolver.findViewById(R.id.entrada_salida);
 
 
@@ -54,7 +58,11 @@ public class MovimientosAdapter extends BaseAdapter{
        //importe.setText(String.valueOf(m.getCantidad()));
         //entrada_salida.setText(m.getEntrada_salida());
        // String PosicionActual = getItem(position);
-        importe.setText(m.getCantidad());
+        importe0.setText(m.getCantidad());
+        importe1.setText(m.getCantidad());
+        importe2.setText(m.getCantidad());
+        importe3.setText(m.getCantidad());
+        importe4.setText(m.getCantidad());
 
         return VistaaDevolver;
 
