@@ -1,5 +1,7 @@
 package com.example.claudiopc.trigar;
 
+import android.util.Log;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -13,6 +15,7 @@ import java.util.List;
  */
 
 public class RssHandler extends DefaultHandler {
+    boolean encontrado;
     public class Noticia
     {
 
@@ -30,7 +33,15 @@ public class RssHandler extends DefaultHandler {
             throws SAXException {
 
         super.characters(ch, start, length);
+        if (encontrado) {
+            String cotiz="";
+            for (int i=0; i<length; i++)
+                cotiz+=ch[i];
 
+            float cotizFloat = Float.parseFloat(cotiz);
+            encontrado = false;
+            Log.d("Encontre",cotiz);
+        }
         if (this.Cotizacionactual != null){
             builder.append(ch, start, length);
         }
@@ -81,7 +92,12 @@ public class RssHandler extends DefaultHandler {
                              String name, Attributes attributes) throws SAXException {
 
         super.startElement(uri, localName, name, attributes);
-
+        if (name.equals("valor")) {
+            String id = (String) attributes.getValue(0);
+             if (id.equals("t_1_val")) {
+                encontrado = true;
+            }
+        }
         if (localName.equals("data")) {
             Cotizacionactual = new Cotizacion();
         }
