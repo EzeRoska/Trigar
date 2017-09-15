@@ -2,33 +2,28 @@ package com.example.claudiopc.trigar;
 
 
 
-import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Created by Usuario on 30/06/2017.
+ */
 
 public class MovimientoFragment extends Fragment implements View.OnClickListener {
 
@@ -39,148 +34,59 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     Boolean EntradaOSalida;
     Spinner txtGrano;
     String tipoGrano;
-    String  Fecha;
+    String Fecha;
     String Lote;
     int Cantidad;
     SQLiteDatabase baseDatos;
     Basededatos accesoBaseproyecto;
     MainActivity activity;
-    Calendar peti;
+    CalendarView Calendario;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View Vista=inflater.inflate(R.layout.fragment_movimiento,container,false);
-        Button Calendario = (Button) Vista.findViewById(R.id.BotonCalendario);
-        Calendario.setOnClickListener(this);
-       // Button guardar=(Button)Vista.findViewById(R.id.botonGuardar);
-        //guardar.setOnClickListener(this);
-        activity = (MainActivity)getActivity();
+        Button guardar=(Button)Vista.findViewById(R.id.botonGuardar);
+        guardar.setOnClickListener(this);
         Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMovimiento);
-        Button btnGuardar = (Button)Vista.findViewById(R.id.botonGuardar);
         btnVolver.setOnClickListener(new View.OnClickListener() {
-
-
 
             @Override
             public void onClick(View v) {
-                listaMovimiento LMF = new listaMovimiento();
-                activity.changeFragment(LMF);
+                PantallainicioFragment PIf = new PantallainicioFragment();
+                activity.changeFragment(PIf);
+
 
             }
         });
-
-
-        btnGuardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        txtFecha=(TextView)Vista.findViewById(R.id.edFecha);
+        txtCantidad=(TextView)Vista.findViewById(R.id.edCant);
+        txtLote=(TextView) Vista.findViewById(R.id.edLote);
+        EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
+        txtGrano=(Spinner) Vista.findViewById(R.id.spGrano);
+        Calendario=(CalendarView) Vista.findViewById(R.id.Calendarioo);
+        return Vista;
+    }
+    @Override
+    public void onClick(View Vista) {
+        switch (Vista.getId()) {
+            case R.id.botonGuardar:
+                SimpleDateFormat calendario=new SimpleDateFormat("dd/MM/yyyy");
+                Fecha=calendario.format(new Date(Calendario.getDate()));
                 Lote=txtLote.getText().toString();
                 Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
                 EntradaOSalida=EntradaSalida.isChecked();
                 tipoGrano=txtGrano.getSelectedItem().toString();
                 insertar(Fecha,Lote,Cantidad,EntradaOSalida,tipoGrano);
-
-            }
-        });
-
-
-        txtCantidad=(TextView)Vista.findViewById(R.id.edCant);
-        txtLote=(TextView) Vista.findViewById(R.id.edLote);
-        EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
-        txtGrano=(Spinner) Vista.findViewById(R.id.spGrano);
-        MainActivity myParent = (MainActivity)getActivity();
-        peti = Calendar.getInstance();
-        peti.add(Calendar.DATE,1);
-/*
-        String Fecha ="como recibo mis datos de la BD, ";
-        myParent.addDatos(Fecha);
-        String Lote = "";
-        myParent.addDatos(Lote);
-        String Cantidad = "";
-        myParent.addDatos(Cantidad);
-        String tipoGrano = "";
-        myParent.addDatos(tipoGrano);
-        String EntradaOSalida = "";
-        myParent.addDatos(EntradaOSalida);
-*/
-       // Calendario=(CalendarView) Vista.findViewById(R.id.Calendarioo);
-
-        return Vista;
-    }
-    /*public void SelectBD()
-
-    {
-        if(baseDeDatosAbierta() == true)
-        {
-            Cursor conjuntoderegistros;
-            conjuntoderegistros=baseDatos.rawQuery("select * from Movimiento",null);
-            if(conjuntoderegistros.moveToFirst()==true){
-                int cantidadregistros=0;
-                do {
-                    cantidadregistros++;
-
-                    String Fechaa=conjuntoderegistros.getString(0);
-                    listaMovimiento Objeto = new listaMovimiento();
-                    Objeto.adapter.add(Fechaa);
-
-                        String Lotee=conjuntoderegistros.getString(1);
-                     Objeto = new listaMovimiento();
-                    Objeto.adapter.add(Lotee);
-
-                    String Granoo=conjuntoderegistros.getString(2);
-                     Objeto = new listaMovimiento();
-                    Objeto.adapter.add(Granoo);
-
-                    String Cantidadd=conjuntoderegistros.getString(3);
-                     Objeto = new listaMovimiento();
-                    Objeto.adapter.add(Cantidadd);
-
-                    String EntradaSalidaa=conjuntoderegistros.getString(4);
-                     Objeto = new listaMovimiento();
-                    Objeto.adapter.add(EntradaSalidaa);
-                }
-                while (conjuntoderegistros.moveToNext()==true);
-            }
-        }
-    }*/
-
-
-
-
-
-    @Override
-    public void onClick(View Vista) {
-        Log.d("probando", "clickeado" + Vista.getId());
-        switch (Vista.getId()) {
-            case R.id.BotonCalendario:
-                DatePickerDialog dp = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        peti.set(year,month,dayOfMonth);
-                        Fecha = peti.get(Calendar.DAY_OF_MONTH) + "/" + peti.get(Calendar.MONTH)+ "/"+ peti.get(Calendar.YEAR);
-
-                    }
-                },peti.get(Calendar.DAY_OF_MONTH),peti.get(Calendar.MONTH),peti.get(Calendar.YEAR));
-                dp.getDatePicker().setMinDate(peti.getTimeInMillis());
-                dp.show();
-                break;
-
-            case R.id.botonGuardar:
-                Lote=txtLote.getText().toString();
-                Cantidad=Integer.parseInt(String.valueOf(txtCantidad.getText()));
-                EntradaOSalida=EntradaSalida.isChecked();
-                tipoGrano=txtGrano.getSelectedItem().toString();
-                insertar(Fecha , Lote ,Cantidad, EntradaOSalida, tipoGrano);
-
+                Toast toast = Toast.makeText(Fecha);
+                toast.show();
                 break;
         }
 
     }
-
 
 
     public  void insertar (String Fecha, String Lote, int Cantidad,boolean EntradaOsalida,String tipoGrano) {
-
         if (baseDeDatosAbierta()) {
             ContentValues nuevoRegistro;
             nuevoRegistro = new ContentValues();
