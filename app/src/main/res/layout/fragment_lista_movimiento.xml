@@ -23,6 +23,7 @@ android:background="@drawable/trigofondo">
         android:background="@android:color/white">
 
 
+
     </ListView>
 
     <LinearLayout
