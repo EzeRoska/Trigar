@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager Manejador;
     ArrayList<String> datos = new ArrayList<>();
     Basededatos acceso;
+
+
 /*
     public ArrayList<String> getDatos() {
         return datos;

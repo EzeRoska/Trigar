@@ -15,7 +15,18 @@ import java.util.List;
  */
 
 public class RssHandler extends DefaultHandler {
+    boolean buscarCereal;
+
+    public String cotizTrigo="";
+    public String cotizMaiz="";
+    public String cotizSoja="";
+    public String cotizCebadaGirasol="";
     boolean encontrado;
+    boolean encontradoTrigo;
+    boolean encontradoMaiz;
+    boolean encontradoSoja;
+    boolean encontradoCebadaGirasol;
+    String cereal;
     public class Noticia
     {
 
@@ -33,14 +44,55 @@ public class RssHandler extends DefaultHandler {
             throws SAXException {
 
         super.characters(ch, start, length);
-        if (encontrado) {
-            String cotiz="";
+        if (buscarCereal) {
+            String nombreCereal="";
             for (int i=0; i<length; i++)
-                cotiz+=ch[i];
+                nombreCereal+=ch[i];
+            cereal = nombreCereal;
+            buscarCereal=false;
 
-            float cotizFloat = Float.parseFloat(cotiz);
-            encontrado = false;
-            Log.d("Encontre",cotiz);
+        }
+        if (encontradoTrigo) {
+             cotizTrigo="";
+            for (int i=0; i<length; i++)
+                cotizTrigo+=ch[i];
+
+            float cotizTrigoFloat = Float.parseFloat(cotizTrigo);
+            encontradoTrigo = false;
+            Log.d("Encontre",cotizTrigo);
+        }
+        if (encontradoMaiz)
+        {
+             cotizMaiz="";
+            for (int i=0;i<length;i++)
+            {
+                cotizMaiz+=ch[i];
+            }
+            float cotizMaizFloat = Float.parseFloat(cotizMaiz);
+            encontradoMaiz = false;
+            Log.d("Encontre",cotizMaiz);
+        }
+        if (encontradoSoja)
+        {
+             cotizSoja="";
+            for (int i=0;i<length;i++)
+            {
+                cotizSoja+=ch[i];
+            }
+            float cotizSojaFloat = Float.parseFloat(cotizSoja);
+            encontradoSoja = false;
+            Log.d("Encontre",cotizSoja);
+        }
+        if (encontradoCebadaGirasol)
+        {
+             cotizCebadaGirasol="";
+            for (int i=0;i<length;i++)
+            {
+                cotizCebadaGirasol+=ch[i];
+            }
+            float cotizCebadaFloat = Float.parseFloat(cotizCebadaGirasol);
+            encontradoCebadaGirasol = false;
+            Log.d("Encontre",cotizCebadaGirasol);
         }
         if (this.Cotizacionactual != null){
             builder.append(ch, start, length);
@@ -92,15 +144,40 @@ public class RssHandler extends DefaultHandler {
                              String name, Attributes attributes) throws SAXException {
 
         super.startElement(uri, localName, name, attributes);
+        if (name.equals("nombre")) {
+            buscarCereal = true;
+        }
+
         if (name.equals("valor")) {
             String id = (String) attributes.getValue(0);
-             if (id.equals("t_1_val")) {
-                encontrado = true;
+            if (id.equals("t_1_val")) {
+                if (cereal.equals("Trigo")) {
+                    encontradoTrigo = true;
+                }
+            }
+            if(id.equals("m_1_val")) {
+                if (cereal.equals("Maiz")) {
+                    encontradoMaiz = true;
+                }
+            }
+            if(id.equals("s_1_val")) {
+                if (cereal.equals("Soja")) {
+                    encontradoSoja = true;
+                }
+            }
+            if(id.equals("g_1_val")) {
+                if (cereal.equals("Girasol")) {
+                    encontradoCebadaGirasol = true;
+                }
+
             }
         }
+
+
         if (localName.equals("data")) {
             Cotizacionactual = new Cotizacion();
         }
     }
-}
+    }
+
 

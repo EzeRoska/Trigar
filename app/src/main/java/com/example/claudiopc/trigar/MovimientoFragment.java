@@ -32,6 +32,7 @@ import java.util.Date;
 
 public class MovimientoFragment extends Fragment implements View.OnClickListener {
 
+    RssHandler a;
     TextView txtFecha;
     TextView txtLote;
     TextView txtCantidad;
@@ -46,7 +47,19 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     Basededatos accesoBaseproyecto;
     MainActivity activity;
     Calendar peti;
-
+    int convertircotizaciontrigo;
+    int convertircotizacionMaiz;
+    int convertircotizacionSoja;
+    int convertircotizacionCebada;
+    String cotizaciontrigo;
+    String cotizacionMaiz;
+    String cotizacionCebada;
+    String cotizacionSoja;
+    int MultiplicarTrigo;
+    int MultiplicarSoja;
+    int MultiplicarMaiz;
+    int MultiplicarCebada;
+//a.cotiztrigo y asi con cada tipo multiplicarlo por la cantidad que ingresa.
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -88,6 +101,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         txtLote=(TextView) Vista.findViewById(R.id.edLote);
         EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
         txtGrano=(Spinner) Vista.findViewById(R.id.spGrano);
+
         MainActivity myParent = (MainActivity)getActivity();
         peti = Calendar.getInstance();
         peti.add(Calendar.DATE,1);
@@ -145,7 +159,38 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     }*/
 
 
+public void mult()
+{ cotizaciontrigo=a.cotizTrigo;
+    convertircotizaciontrigo=Integer.parseInt(cotizaciontrigo);
+    cotizacionMaiz=a.cotizMaiz;
+    convertircotizacionMaiz=Integer.parseInt(cotizacionMaiz);
+    cotizacionSoja=a.cotizSoja;
+    convertircotizacionSoja=Integer.parseInt(cotizacionSoja);
+    cotizacionCebada=a.cotizCebadaGirasol;
+    convertircotizacionCebada=Integer.parseInt(cotizacionCebada);
+    String text = txtGrano.getSelectedItem().toString();
+    if(text=="trigo")
+    {
+        MultiplicarTrigo=convertircotizaciontrigo*Cantidad;
+        //multiplico convertircotizaciontrigo con lo que ingreso el usuario
+    }
+    if(text=="Maiz")
+    {
+        MultiplicarMaiz=convertircotizacionMaiz*Cantidad;
+        //multiplico convertircotizaciontrigo con lo que ingreso el usuario
+    }
+    if(text=="Soja")
+    {
+        MultiplicarSoja=convertircotizacionSoja*Cantidad;
+        //multiplico convertircotizaciontrigo con lo que ingreso el usuario
+    }
+    if(text=="Cebada")
+    {
+        MultiplicarCebada=convertircotizacionCebada*Cantidad;
+        //multiplico convertircotizaciontrigo con lo que ingreso el usuario
+    }
 
+}
 
 
     @Override
