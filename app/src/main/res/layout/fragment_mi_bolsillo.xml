@@ -28,41 +28,98 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView8"
-        android:layout_marginTop="130dp"
-        android:text="Trigo"
-        android:textColor="@android:color/black"
-        android:textSize="35sp" />
-    <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="150dp"
-        android:text="Valor($)"
+        android:layout_marginLeft="dp"
+        android:text="Grano"
         android:textColor="@android:color/black"
-        android:textSize="25sp" />
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="116dp"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textView8"
-        android:layout_alignLeft="@+id/textView8"
-        android:layout_alignRight="@+id/textView8"
-        android:layout_alignStart="@+id/textView8"
-        android:layout_alignTop="@+id/textView2"
-        android:ems="10"
-        android:layout_marginTop="130dp"
-        android:layout_marginLeft="150dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="80dp"
+        android:text="Cantidad"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="180dp"
+        android:text="Cotizacion"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="300dp"
+        android:text="Total"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
-        android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="150dp"
+        android:text="Trigo"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/TrigoCant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="95dp"
+        android:text="cant"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/TrigoCotiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="200dp"
+        android:text="cotiz"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/TrigoTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="305dp"
+        android:text="total"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
@@ -70,12 +127,48 @@
         android:layout_below="@+id/editText2"
         android:layout_marginEnd="18dp"
         android:layout_marginRight="18dp"
-        android:layout_marginTop="215dp"
+        android:layout_marginTop="200dp"
         android:layout_toLeftOf="@+id/editText2"
         android:layout_toStartOf="@+id/editText2"
         android:text="Cebada"
         android:textColor="@android:color/black"
-        android:textSize="35sp" />
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/CebadaCant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="95dp"
+        android:layout_toLeftOf="@+id/editText2"
+        android:layout_toStartOf="@+id/editText2"
+        android:text="cant"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/CebadaCotiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="200dp"
+        android:layout_toLeftOf="@+id/editText2"
+        android:layout_toStartOf="@+id/editText2"
+        android:text="cotiz"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/CebadaTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="305dp"
+        android:layout_toLeftOf="@+id/editText2"
+        android:layout_toStartOf="@+id/editText2"
+        android:text="total"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView10"
@@ -84,11 +177,46 @@
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
         android:layout_below="@+id/textView9"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="250dp"
         android:text="Maiz"
         android:textColor="@android:color/black"
-        android:textSize="35sp" />
-
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/MaizCant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/textView9"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="95dp"
+        android:text="cant"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/MaizCotiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/textView9"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="200dp"
+        android:text="cotiz"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/MaizTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/textView9"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="305dp"
+        android:text="total"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
@@ -96,49 +224,48 @@
         android:layout_alignLeft="@+id/textView10"
         android:layout_alignStart="@+id/textView10"
         android:layout_below="@+id/textView10"
-        android:layout_marginTop="390dp"
+        android:layout_marginTop="300dp"
         android:text="Soja"
         android:textColor="@android:color/black"
-        android:textSize="35sp" />
-    <EditText
-        android:id="@+id/editText9"
-        android:layout_width="116dp"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/SojaCant"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText10"
-        android:layout_alignStart="@+id/editText10"
-        android:layout_alignTop="@+id/textView10"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="390dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2" />
-
-    <EditText
-        android:id="@+id/editText10"
-        android:layout_width="116dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_alignBottom="@+id/textView11"
-        android:layout_toRightOf="@+id/textView9"
-        android:layout_alignRight="@+id/editText2"
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_below="@+id/textView10"
         android:layout_marginTop="300dp"
-        android:layout_marginLeft="150dp"
-        android:layout_alignEnd="@+id/editText2" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="116dp"
+        android:layout_marginLeft="95dp"
+        android:text="cant"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/SojaCotiz"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText9"
-        android:layout_alignRight="@+id/editText9"
-        android:layout_alignTop="@+id/textView9"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="215dp"
-        android:layout_toRightOf="@+id/textView9"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_below="@+id/textView10"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="200dp"
+        android:text="cotiz"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/SojaTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_below="@+id/textView10"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="305dp"
+        android:text="total"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+
     <Button
         android:id="@+id/btnVolver3"
         android:layout_width="wrap_content"
