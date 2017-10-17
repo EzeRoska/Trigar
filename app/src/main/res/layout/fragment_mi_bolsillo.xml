@@ -34,7 +34,7 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:layout_marginLeft="dp"
+        android:layout_marginLeft="8dp"
         android:text="Grano"
         android:textColor="@android:color/black"
         android:textSize="20sp" />

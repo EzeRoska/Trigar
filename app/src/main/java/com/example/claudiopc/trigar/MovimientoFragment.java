@@ -159,38 +159,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     }*/
 
 
-public void mult()
-{ cotizaciontrigo=a.cotizTrigo;
-    convertircotizaciontrigo=Integer.parseInt(cotizaciontrigo);
-    cotizacionMaiz=a.cotizMaiz;
-    convertircotizacionMaiz=Integer.parseInt(cotizacionMaiz);
-    cotizacionSoja=a.cotizSoja;
-    convertircotizacionSoja=Integer.parseInt(cotizacionSoja);
-    cotizacionCebada=a.cotizCebadaGirasol;
-    convertircotizacionCebada=Integer.parseInt(cotizacionCebada);
-    String text = txtGrano.getSelectedItem().toString();
-    if(text=="trigo")
-    {
-        MultiplicarTrigo=convertircotizaciontrigo*Cantidad;
-        //multiplico convertircotizaciontrigo con lo que ingreso el usuario
-    }
-    if(text=="Maiz")
-    {
-        MultiplicarMaiz=convertircotizacionMaiz*Cantidad;
-        //multiplico convertircotizaciontrigo con lo que ingreso el usuario
-    }
-    if(text=="Soja")
-    {
-        MultiplicarSoja=convertircotizacionSoja*Cantidad;
-        //multiplico convertircotizaciontrigo con lo que ingreso el usuario
-    }
-    if(text=="Cebada")
-    {
-        MultiplicarCebada=convertircotizacionCebada*Cantidad;
-        //multiplico convertircotizaciontrigo con lo que ingreso el usuario
-    }
 
-}
 
 
     @Override
