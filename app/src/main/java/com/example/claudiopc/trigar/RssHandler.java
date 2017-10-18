@@ -1,7 +1,8 @@
 package com.example.claudiopc.trigar;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -17,27 +18,31 @@ import java.util.List;
 public class RssHandler extends DefaultHandler {
     boolean buscarCereal;
 
-    public String cotizTrigo="";
-    public String cotizMaiz="";
-    public String cotizSoja="";
-    public String cotizCebadaGirasol="";
+
+    MainActivity mainActivity;
+    public String cotizTrigo = "";
+    public String cotizMaiz = "";
+    public String cotizSoja = "";
+    public String cotizCebadaGirasol = "";
     boolean encontrado;
     boolean encontradoTrigo;
     boolean encontradoMaiz;
     boolean encontradoSoja;
     boolean encontradoCebadaGirasol;
     String cereal;
-    public class Noticia
-    {
+
+    public class Noticia {
 
     }
+
     private List<Cotizacion> Cotizaciones;
     private Cotizacion Cotizacionactual;
     private StringBuilder builder;
 
-    public List<Cotizacion> getCotizaciones(){
+    public List<Cotizacion> getCotizaciones() {
         return Cotizaciones;
     }
+
 
     @Override
     public void characters(char[] ch, int start, int length)
@@ -45,56 +50,51 @@ public class RssHandler extends DefaultHandler {
 
         super.characters(ch, start, length);
         if (buscarCereal) {
-            String nombreCereal="";
-            for (int i=0; i<length; i++)
-                nombreCereal+=ch[i];
+            String nombreCereal = "";
+            for (int i = 0; i < length; i++)
+                nombreCereal += ch[i];
             cereal = nombreCereal;
-            buscarCereal=false;
+            buscarCereal = false;
 
         }
         if (encontradoTrigo) {
-             cotizTrigo="";
-            for (int i=0; i<length; i++)
-                cotizTrigo+=ch[i];
+            cotizTrigo = "";
+            for (int i = 0; i < length; i++){
 
+                cotizTrigo += ch[i];
+            }
             float cotizTrigoFloat = Float.parseFloat(cotizTrigo);
             encontradoTrigo = false;
-            Log.d("Encontre",cotizTrigo);
+            Log.d("Encontre", cotizTrigo);
         }
-        if (encontradoMaiz)
-        {
-             cotizMaiz="";
-            for (int i=0;i<length;i++)
-            {
-                cotizMaiz+=ch[i];
+        if (encontradoMaiz) {
+            cotizMaiz = "";
+            for (int i = 0; i < length; i++) {
+                cotizMaiz += ch[i];
             }
             float cotizMaizFloat = Float.parseFloat(cotizMaiz);
             encontradoMaiz = false;
-            Log.d("Encontre",cotizMaiz);
+            Log.d("Encontre", cotizMaiz);
         }
-        if (encontradoSoja)
-        {
-             cotizSoja="";
-            for (int i=0;i<length;i++)
-            {
-                cotizSoja+=ch[i];
+        if (encontradoSoja) {
+            cotizSoja = "";
+            for (int i = 0; i < length; i++) {
+                cotizSoja += ch[i];
             }
             float cotizSojaFloat = Float.parseFloat(cotizSoja);
             encontradoSoja = false;
-            Log.d("Encontre",cotizSoja);
+            Log.d("Encontre", cotizSoja);
         }
-        if (encontradoCebadaGirasol)
-        {
-             cotizCebadaGirasol="";
-            for (int i=0;i<length;i++)
-            {
-                cotizCebadaGirasol+=ch[i];
+        if (encontradoCebadaGirasol) {
+            cotizCebadaGirasol = "";
+            for (int i = 0; i < length; i++) {
+                cotizCebadaGirasol += ch[i];
             }
             float cotizCebadaFloat = Float.parseFloat(cotizCebadaGirasol);
             encontradoCebadaGirasol = false;
-            Log.d("Encontre",cotizCebadaGirasol);
+            Log.d("Encontre", cotizCebadaGirasol);
         }
-        if (this.Cotizacionactual != null){
+        if (this.Cotizacionactual != null) {
             builder.append(ch, start, length);
         }
     }
@@ -155,17 +155,17 @@ public class RssHandler extends DefaultHandler {
                     encontradoTrigo = true;
                 }
             }
-            if(id.equals("m_1_val")) {
+            if (id.equals("m_1_val")) {
                 if (cereal.equals("Maiz")) {
                     encontradoMaiz = true;
                 }
             }
-            if(id.equals("s_1_val")) {
+            if (id.equals("s_1_val")) {
                 if (cereal.equals("Soja")) {
                     encontradoSoja = true;
                 }
             }
-            if(id.equals("g_1_val")) {
+            if (id.equals("g_1_val")) {
                 if (cereal.equals("Girasol")) {
                     encontradoCebadaGirasol = true;
                 }
@@ -178,6 +178,8 @@ public class RssHandler extends DefaultHandler {
             Cotizacionactual = new Cotizacion();
         }
     }
-    }
+
+}
+
 
 

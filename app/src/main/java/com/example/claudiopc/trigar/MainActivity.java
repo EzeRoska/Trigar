@@ -18,6 +18,16 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> datos = new ArrayList<>();
     Basededatos acceso;
 
+    public String getCotizTrigo() {
+        return cotizTrigo;
+    }
+
+    public void setCotizTrigo(String cotizTrigo) {
+        this.cotizTrigo = cotizTrigo;
+    }
+
+    String cotizTrigo;
+
 
 /*
     public ArrayList<String> getDatos() {

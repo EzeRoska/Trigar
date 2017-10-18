@@ -7,17 +7,24 @@ package com.example.claudiopc.trigar;
         import android.net.Uri;
         import android.os.Bundle;
         import android.support.v4.app.Fragment;
+        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.Spinner;
+        import android.widget.TextView;
+
+        import org.w3c.dom.Text;
+
+        import java.util.ArrayList;
+        import java.util.List;
 
 
 public class MiBolsilloFrag extends Fragment {
     RssHandler a;
-    Basededatos accesobase;
-    SQLiteDatabase Base;
-
+    SQLiteDatabase baseDatos;
+    Basededatos accesoBaseproyecto;
+    Integer[] Vec = new Integer[4];
     MovimientoFragment b;
     int convertircotizaciontrigo;
     int convertircotizacionMaiz;
@@ -38,47 +45,63 @@ public class MiBolsilloFrag extends Fragment {
     String cantidadsoja;
     String cantidadcebada;
     String Nombre;
+    RssHandler Objeto = new RssHandler();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        String text = b.txtGrano.getSelectedItem().toString();
+        View Vista=inflater.inflate(R.layout.fragment_mi_bolsillo,container,false);
+        TextView txtTrigo = (TextView) Vista.findViewById(R.id.TrigoCant);
+        TextView txtMaiz=(TextView) Vista.findViewById(R.id.MaizCant);
+        TextView txtSoja=(TextView) Vista.findViewById(R.id.SojaCant);
+        TextView txtCebada=(TextView) Vista.findViewById(R.id.CebadaCant);
+        TextView txtCotizTrigo = (TextView)Vista.findViewById(R.id.TrigoCotiz);
+        //Log.d("Trigo", Objeto.DevolverTrigo());
         if(baseDeDatosAbierta())
         {
             Cursor conjuntoderegistros;
-            conjuntoderegistros=Base.rawQuery("select Cantidad From Movimiento",null);
+            conjuntoderegistros=baseDatos.rawQuery("select sum(Cantidad), Grano From Movimiento group by Grano",null);
             if(conjuntoderegistros.moveToFirst()==true)
             {
-                int cantidadderegistros=0;
                 do {
-                    cantidadderegistros++;
-                    Nombre=conjuntoderegistros.getString(0);
+                    if (conjuntoderegistros.getString(1).compareTo("Trigo") == 0){
+                        //txtTrigo.setText(String.valueOf(conjuntoderegistros.getInt(0)));
+                        Vec[0] = conjuntoderegistros.getInt(0);
+                    }
+
+                    if (conjuntoderegistros.getString(1).compareTo("Maiz") == 0){
+                        //txtMaiz.setText(String.valueOf(conjuntoderegistros.getInt(0)));
+                        Vec[1] = conjuntoderegistros.getInt(0);
+                    }
+
+                    if (conjuntoderegistros.getString(1).compareTo("Soja") == 0){
+                        //txtSoja.setText(String.valueOf(conjuntoderegistros.getInt(0)));
+                        Vec[2] = conjuntoderegistros.getInt(0);
+                    }
+
+                    if (conjuntoderegistros.getString(1).compareTo("Cebada") == 0){
+                        Log.d("Cebada", "Entra a cebada");
+                        //txtCebada.setText(String.valueOf(conjuntoderegistros.getInt(0)));
+                        Vec[3] = conjuntoderegistros.getInt(0);
+                        Log.d("Cebada", String.valueOf(Vec[3]));
+                    }
                 }
                 while (conjuntoderegistros.moveToNext()==true);
-                if(text=="trigo")
-                {
-                    cantidadtrigo=Nombre;
-                }
-                if (text=="Maiz")
-                {
-                    cantidadmaiz=Nombre;
-                }
-                if(text=="Soja")
-                {
-                    cantidadsoja=Nombre;
-
-                }
-                if(text=="cebada")
-                {
-                    cantidadcebada=Nombre;
-
-                }
-
 
             }
         }
 
+        //MainActivity ma = (MainActivity) getActivity();
+        txtTrigo.setText(String.valueOf(Vec[0]));
+        txtMaiz.setText(String.valueOf(Vec[1]));
+        txtSoja.setText(String.valueOf(Vec[2]));
+        txtCebada.setText(String.valueOf(Vec[3]));
+        //txtCotizTrigo.setText(ma.getCotizTrigo());
+       // String Cotiz = Objeto.DevolverTrigo();
+        //Log.d("Cotiz", Cotiz);
+        //txtCotizTrigo.setText(Cotiz);
+        View VistaQueVuelve = inflater.inflate(R.layout.fragment_mi_bolsillo, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mi_bolsillo, container, false);
+        return Vista;
     }
 
 
@@ -88,9 +111,9 @@ public class MiBolsilloFrag extends Fragment {
     }
     private boolean baseDeDatosAbierta() {
         boolean responder;
-        accesobase=new Basededatos(this,"baseDeDatos",null,1);
-        Base=accesobase.getWritableDatabase();
-        if (Base != null) {
+        accesoBaseproyecto=new Basededatos(getActivity(),"Basededatos",null,1);
+        baseDatos=accesoBaseproyecto.getWritableDatabase();
+        if (baseDatos != null) {
             responder = true;
         }
         else {

@@ -17,8 +17,10 @@ public class RssParserSax  {
 
     private URL rssUrl;
 
+
     public RssParserSax(String url)
     {
+
         try
         {
             this.rssUrl = new URL(url);
