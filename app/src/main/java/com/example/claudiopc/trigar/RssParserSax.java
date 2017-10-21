@@ -31,7 +31,7 @@ public class RssParserSax  {
         }
     }
 
-    public List<Cotizacion> parse()
+    public Cotizacion parse()
     {
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
@@ -47,6 +47,7 @@ public class RssParserSax  {
             throw new RuntimeException(e);
         }
     }
+
 
     private InputStream getInputStream()
     {

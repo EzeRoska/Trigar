@@ -35,11 +35,11 @@ public class RssHandler extends DefaultHandler {
 
     }
 
-    private List<Cotizacion> Cotizaciones;
+    private Cotizacion Cotizaciones;
     private Cotizacion Cotizacionactual;
     private StringBuilder builder;
 
-    public List<Cotizacion> getCotizaciones() {
+    public Cotizacion getCotizaciones() {
         return Cotizaciones;
     }
 
@@ -65,6 +65,7 @@ public class RssHandler extends DefaultHandler {
             }
             float cotizTrigoFloat = Float.parseFloat(cotizTrigo);
             encontradoTrigo = false;
+            Cotizaciones.setCotizTrigo(cotizTrigoFloat);
             Log.d("Encontre", cotizTrigo);
         }
         if (encontradoMaiz) {
@@ -74,6 +75,7 @@ public class RssHandler extends DefaultHandler {
             }
             float cotizMaizFloat = Float.parseFloat(cotizMaiz);
             encontradoMaiz = false;
+            Cotizaciones.setCotizMaiz(cotizMaizFloat);
             Log.d("Encontre", cotizMaiz);
         }
         if (encontradoSoja) {
@@ -83,6 +85,7 @@ public class RssHandler extends DefaultHandler {
             }
             float cotizSojaFloat = Float.parseFloat(cotizSoja);
             encontradoSoja = false;
+            Cotizaciones.setCotizSoja(cotizSojaFloat);
             Log.d("Encontre", cotizSoja);
         }
         if (encontradoCebadaGirasol) {
@@ -92,6 +95,7 @@ public class RssHandler extends DefaultHandler {
             }
             float cotizCebadaFloat = Float.parseFloat(cotizCebadaGirasol);
             encontradoCebadaGirasol = false;
+            Cotizaciones.setCotizCebada(cotizCebadaFloat);
             Log.d("Encontre", cotizCebadaGirasol);
         }
         if (this.Cotizacionactual != null) {
@@ -107,9 +111,9 @@ public class RssHandler extends DefaultHandler {
 
         if (this.Cotizacionactual != null) {
             if (localName.equals("nombre")) {
-                Cotizacionactual.setNombre(builder.toString());
+                //Cotizacionactual.setNombre(builder.toString());
             }
-            Cotizaciones.add(Cotizacionactual);
+            //Cotizaciones.add(Cotizacionactual);
 /*
             if (localName.equals("title")) {
                 Cotizacionactual.setTitulo(sbTexto.toString());
@@ -135,7 +139,7 @@ public class RssHandler extends DefaultHandler {
 
         super.startDocument();
 
-        Cotizaciones = new ArrayList<Cotizacion>();
+        Cotizaciones = new Cotizacion();
         builder = new StringBuilder();
     }
 

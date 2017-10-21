@@ -5,13 +5,43 @@ package com.example.claudiopc.trigar;
  */
 
 public class Cotizacion {
-    String nombre;
+    float cotizTrigo;
+    float cotizMaiz;
+    float cotizSoja;
+    float cotizCebada;
 
-    public String getNombre() {
-        return nombre;
+    public void setCotizTrigo(float cotizTrigo) {
+        this.cotizTrigo = cotizTrigo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCotizMaiz(float cotizMaiz) {
+        this.cotizMaiz = cotizMaiz;
+
     }
+
+    public void setCotizSoja(float cotizSoja) {
+        this.cotizSoja = cotizSoja;
+    }
+
+    public void setCotizCebada(float cotizCebada) {
+        this.cotizCebada = cotizCebada;
+    }
+
+    public float getCotizTrigo() {
+        return cotizTrigo;
+    }
+
+    public float getCotizMaiz() {
+        return cotizMaiz;
+    }
+
+    public float getCotizSoja() {
+        return cotizSoja;
+    }
+
+    public float getCotizCebada() {
+        return cotizCebada;
+    }
+
+
 }
