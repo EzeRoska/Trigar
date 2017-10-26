@@ -105,15 +105,6 @@
         android:onClick="btnGuardar"
         android:text="Guardar" />
 
-    <Button
-        android:id="@+id/btnVolverMovimiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="450dp"
-        android:layout_marginBottom="20dp"
-        android:textSize="15dp"
-        android:text="Volver" />
-
     <Spinner
         android:id="@+id/spGrano"
         android:layout_width="150dp"
@@ -132,6 +123,15 @@
         android:layout_height="wrap_content"
         android:textSize="15dp"
         android:text="Calendario" />
+
+    <Button
+        android:id="@+id/btnVolverMovimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="450dp"
+        android:text="Volver"
+        android:textSize="15dp" />
 
 
 </FrameLayout>

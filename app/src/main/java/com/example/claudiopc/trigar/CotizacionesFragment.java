@@ -40,6 +40,7 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
     TextView ValorSoja;
     TextView ValorCebada;
     MainActivity activity;
+
     private boolean baseDeDatosAbierta() {
         boolean responder;
         accesoBaseproyecto=new Basededatos(getActivity(),"Basededatos",null,1);
@@ -74,8 +75,22 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View Vista=inflater.inflate(R.layout.fragment_cotizaciones,container,false);
         View vistadevolver;
         vistadevolver = inflater.inflate(R.layout.fragment_cotizaciones, container, false);
+        activity = (MainActivity)getActivity();
+        Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverCotizaciones);
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+
+
+
+            @Override
+            public void onClick(View v) {
+                PantallainicioFragment PIf = new PantallainicioFragment();
+                activity.changeFragment(PIf);
+
+            }
+        });
 
 
 
@@ -85,20 +100,7 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
        ValorSoja = (TextView) vistadevolver.findViewById(R.id.SojaPrecio);
          ValorCebada = (TextView) vistadevolver.findViewById(R.id.CebadaPrecio);
 
-        activity = (MainActivity)getActivity();
-        Button btnVolver = (Button)vistadevolver.findViewById(R.id.btnVolverCotizaciones);
-        btnVolver.setOnClickListener(new View.OnClickListener() {
 
-
-
-            @Override
-            public void onClick(View v) {
-
-                //listaMovimiento LMF = new listaMovimiento();
-                activity.Volver();
-
-            }
-        });
         return vistadevolver;
     }
 

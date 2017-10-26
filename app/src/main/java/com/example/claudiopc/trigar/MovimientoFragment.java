@@ -69,8 +69,8 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         // Button guardar=(Button)Vista.findViewById(R.id.botonGuardar);
         //guardar.setOnClickListener(this);
         activity = (MainActivity)getActivity();
-        Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMovimiento);
         Button btnGuardar = (Button)Vista.findViewById(R.id.botonGuardar);
+        Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMovimiento);
         btnVolver.setOnClickListener(new View.OnClickListener() {
 
 

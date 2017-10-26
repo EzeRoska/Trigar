@@ -11,6 +11,7 @@ package com.example.claudiopc.trigar;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
+        import android.widget.Button;
         import android.widget.Spinner;
         import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class MiBolsilloFrag extends Fragment {
     Integer[] Vec = new Integer[4];
     Integer[] Vec2 = new Integer[4];
     MovimientoFragment b;
+    MainActivity activity;
     int convertircotizaciontrigo;
     int convertircotizacionMaiz;
     int convertircotizacionSoja;
@@ -62,6 +64,19 @@ public class MiBolsilloFrag extends Fragment {
         TextView txtCotizMaiz = (TextView) Vista.findViewById(R.id.MaizCotiz);
         TextView txtCotizSoja = (TextView) Vista.findViewById(R.id.SojaCotiz);
         TextView txtCotizCebada = (TextView) Vista.findViewById(R.id.CebadaCotiz);
+        activity = (MainActivity)getActivity();
+        Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMibolsillo);
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+
+
+
+            @Override
+            public void onClick(View v) {
+                PantallainicioFragment PIf = new PantallainicioFragment();
+                activity.changeFragment(PIf);
+
+            }
+        });
         //Log.d("Trigo", Objeto.DevolverTrigo());
         if (baseDeDatosAbierta()) {
             Cursor conjuntoderegistros;
