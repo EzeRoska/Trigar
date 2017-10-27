@@ -35,7 +35,7 @@ public class Basededatos extends SQLiteOpenHelper {
 
         Log.d("SQLite","Declaro e inicializo la variable para crear la tabla Cotizaciones");
         String sqlCrearTablaCotizaciones;
-        sqlCrearTablaCotizaciones=" create table Cotizaciones(Id integer, Fecha integer, Importe integer,Tipo boolean)";
+        sqlCrearTablaCotizaciones=" create table Cotizaciones(Id integer, Fecha text, ImporteTrigo real,ImporteSoja real,ImporteMaiz real,ImporteCebada real)";
 
 
         Log.d("SQLite","invoca al creador de la tabla");

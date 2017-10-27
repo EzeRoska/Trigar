@@ -76,13 +76,11 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View Vista=inflater.inflate(R.layout.fragment_cotizaciones,container,false);
-        View vistadevolver;
-        vistadevolver = inflater.inflate(R.layout.fragment_cotizaciones, container, false);
+       // View vistadevolver;
+        //vistadevolver = inflater.inflate(R.layout.fragment_cotizaciones, container, false);
         activity = (MainActivity)getActivity();
         Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverCotizaciones);
         btnVolver.setOnClickListener(new View.OnClickListener() {
-
-
 
             @Override
             public void onClick(View v) {
@@ -95,13 +93,13 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
 
 
         new BuscarDatos().execute( "http://bolsadecereales.com/flash-cotizaciones.xml");
-   ValorTrigo = (TextView) vistadevolver.findViewById(R.id.TrigoPrecio);
-        ValorMaiz = (TextView) vistadevolver.findViewById(R.id.MaizPrecio);
-       ValorSoja = (TextView) vistadevolver.findViewById(R.id.SojaPrecio);
-         ValorCebada = (TextView) vistadevolver.findViewById(R.id.CebadaPrecio);
+   ValorTrigo = (TextView) Vista.findViewById(R.id.TrigoPrecio);
+        ValorMaiz = (TextView) Vista.findViewById(R.id.MaizPrecio);
+       ValorSoja = (TextView) Vista.findViewById(R.id.SojaPrecio);
+         ValorCebada = (TextView) Vista.findViewById(R.id.CebadaPrecio);
 
 
-        return vistadevolver;
+        return Vista;
     }
 
     @Override

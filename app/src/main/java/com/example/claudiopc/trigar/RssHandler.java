@@ -160,7 +160,7 @@ public class RssHandler extends DefaultHandler {
                 }
             }
             if (id.equals("m_1_val")) {
-                if (cereal.equals("Maiz")) {
+                if (cereal.equals("Maíz")) {
                     encontradoMaiz = true;
                 }
             }

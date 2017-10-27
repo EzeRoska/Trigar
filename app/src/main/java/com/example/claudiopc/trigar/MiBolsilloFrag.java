@@ -108,23 +108,25 @@ public class MiBolsilloFrag extends Fragment {
                 while (conjuntoderegistros.moveToNext() == true);
 
             }
-            Cursor conjuntoderegistros2;
-
-            //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-            //Calendar cal = Calendar.getInstance();
-            //String Fecha= dateFormat.format(cal); //2016/11/16 12:08:43
 
 
-/*            conjuntoderegistros2 = baseDatos.rawQuery("select ImporteTrigo ,ImporteSoja ,ImporteMaiz ,ImporteCebada From Cotizaciones ", null);
-            if (conjuntoderegistros2.moveToFirst() == true) {
-                Vec2[0] = conjuntoderegistros2.getInt(0);
-                Vec2[1] = conjuntoderegistros2.getInt(1);
-                Vec2[2] = conjuntoderegistros2.getInt(2);
-                Vec2[3] = conjuntoderegistros2.getInt(3);
-            }
-            while (conjuntoderegistros2.moveToNext() == true);
+        }
 
-        */}
+        Cursor conjuntoderegistros2;
+
+        //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        //Calendar cal = Calendar.getInstance();
+        //String Fecha= dateFormat.format(cal); //2016/11/16 12:08:43
+
+
+        conjuntoderegistros2 = baseDatos.rawQuery("select * From Cotizaciones", null);
+        if (conjuntoderegistros2.moveToFirst() == true) {
+            Vec2[0] = conjuntoderegistros2.getInt(0);
+            Vec2[1] = conjuntoderegistros2.getInt(1);
+            Vec2[2] = conjuntoderegistros2.getInt(2);
+            Vec2[3] = conjuntoderegistros2.getInt(3);
+        }
+        while (conjuntoderegistros2.moveToNext() == true);
 
 
         //MainActivity ma = (MainActivity) getActivity();
@@ -164,6 +166,7 @@ public class MiBolsilloFrag extends Fragment {
         return responder;
 
     }
+
    /* public void mult()
     { cotizaciontrigo=a.cotizTrigo;
         convertircotizaciontrigo=Integer.parseInt(cotizaciontrigo);
