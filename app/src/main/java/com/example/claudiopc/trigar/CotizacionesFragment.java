@@ -41,33 +41,7 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
     TextView ValorCebada;
     MainActivity activity;
 
-    private boolean baseDeDatosAbierta() {
-        boolean responder;
-        accesoBaseproyecto=new Basededatos(getActivity(),"Basededatos",null,1);
-        baseDatos=accesoBaseproyecto.getWritableDatabase();
-        if (baseDatos != null) {
-            responder = true;
-        }
-        else {
-            responder = false;
-        }
-        return responder;
 
-    }
-    public  void insertar ( float ImporteTrigo,float ImporteSoja,float ImporteMaiz,float ImporteCebada) {
-
-        if (baseDeDatosAbierta()) {
-            ContentValues nuevoRegistro;
-            nuevoRegistro = new ContentValues();
-            //nuevoRegistro.put("Fecha", Fecha);
-            nuevoRegistro.put("ImporteTrigo", ImporteTrigo);
-            nuevoRegistro.put("ImporteSoja", ImporteSoja);
-            nuevoRegistro.put("ImporteMaiz", ImporteMaiz);
-            nuevoRegistro.put("ImporteCebada",ImporteCebada);
-            baseDatos.insert("Cotizaciones", null, nuevoRegistro);
-        }
-        baseDatos.close();
-    }
 
     public CotizacionesFragment() {
     }
@@ -90,10 +64,9 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
             }
         });
 
-
-
         new BuscarDatos().execute( "http://bolsadecereales.com/flash-cotizaciones.xml");
-   ValorTrigo = (TextView) Vista.findViewById(R.id.TrigoPrecio);
+
+        ValorTrigo = (TextView) Vista.findViewById(R.id.TrigoPrecio);
         ValorMaiz = (TextView) Vista.findViewById(R.id.MaizPrecio);
        ValorSoja = (TextView) Vista.findViewById(R.id.SojaPrecio);
          ValorCebada = (TextView) Vista.findViewById(R.id.CebadaPrecio);
@@ -122,7 +95,7 @@ private class BuscarDatos extends AsyncTask<String,Void,String>
         ValorSoja.setText(String.valueOf(cotizSo));
 
         ValorCebada.setText(String.valueOf(cotizCe));
-        insertar(cotiztr,cotizMa,cotizSo,cotizCe);
+
     }
     @Override
     protected String doInBackground(String... parametros) {
@@ -152,12 +125,41 @@ private class BuscarDatos extends AsyncTask<String,Void,String>
         cotizMa=c.getCotizMaiz();
         cotizSo=c.getCotizSoja();
         cotizCe=c.getCotizCebada();
+insertar(cotiztr,cotizMa,cotizSo,cotizCe);
         //Calendar calendar = Calendar.getInstance();
         //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //Calendar cal = Calendar.getInstance();
         //Fecha= dateFormat.format(cal); //2016/11/16 12:08:43
         //create table Cotizaciones(Id integer, Fecha integer, ImporteTrigo real,ImporteSoja real,ImporteMaiz real,ImporteCebada real)";
         return "Hola";
+    }
+    private boolean baseDeDatosAbierta() {
+        boolean responder;
+        accesoBaseproyecto=new Basededatos(getActivity(),"Basededatos",null,1);
+        baseDatos=accesoBaseproyecto.getWritableDatabase();
+        if (baseDatos != null) {
+            responder = true;
+        }
+        else {
+            responder = false;
+        }
+        return responder;
+
+    }
+    public  void insertar ( float cotiztr,float cotizMa,float cotizSo,float cotizCe) {
+
+        if (baseDeDatosAbierta()) {
+
+            ContentValues nuevoRegistro;
+            nuevoRegistro = new ContentValues();
+            //nuevoRegistro.put("Fecha", Fecha);
+            nuevoRegistro.put("CotizacionTrigo", cotiztr);
+            nuevoRegistro.put("CotizacionMaiz", cotizMa);
+            nuevoRegistro.put("CotizacionSoja", cotizSo);
+            nuevoRegistro.put("CotizacionCebada",cotizCe);
+            baseDatos.insert("Cotizaciones", null, nuevoRegistro);
+        }
+        baseDatos.close();
     }
 }
 

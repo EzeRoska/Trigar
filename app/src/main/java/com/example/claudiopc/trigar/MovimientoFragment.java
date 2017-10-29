@@ -201,7 +201,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
             nuevoRegistro.put("Fecha", Fecha);
             nuevoRegistro.put("Lote", Lote);
             nuevoRegistro.put("Cantidad", Cantidad);
-            nuevoRegistro.put("EntradaSalida", EntradaOsalida?"E":"S");
+            nuevoRegistro.put("EntradaSalida", EntradaOsalida?"S":"E");
             nuevoRegistro.put("Grano",tipoGrano);
             baseDatos.insert("Movimiento", null, nuevoRegistro);
         }
