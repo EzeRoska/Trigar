@@ -36,6 +36,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
     TextView txtFecha;
     TextView txtLote;
     TextView txtCantidad;
+Calendar hola;
     Switch EntradaSalida;
     Boolean EntradaOSalida;
     Spinner txtGrano;
@@ -71,6 +72,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         activity = (MainActivity)getActivity();
         Button btnGuardar = (Button)Vista.findViewById(R.id.botonGuardar);
         Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMovimiento);
+
         btnVolver.setOnClickListener(new View.OnClickListener() {
 
 
@@ -92,6 +94,8 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
                 EntradaOSalida=EntradaSalida.isChecked();
                 tipoGrano=txtGrano.getSelectedItem().toString();
                 insertar(Fecha,Lote,Cantidad,EntradaOSalida,tipoGrano);
+                txtCantidad.setText("");
+                txtLote.setText("");
 
             }
         });
@@ -101,7 +105,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
         txtLote=(TextView) Vista.findViewById(R.id.edLote);
         EntradaSalida=(Switch) Vista.findViewById(R.id.switch1);
         txtGrano=(Spinner) Vista.findViewById(R.id.spGrano);
-
+txtFecha=(TextView) Vista.findViewById(R.id.textViewFecha);
         MainActivity myParent = (MainActivity)getActivity();
         peti = Calendar.getInstance();
         peti.add(Calendar.DATE,1);
@@ -177,6 +181,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
                 },peti.get(Calendar.DAY_OF_MONTH),peti.get(Calendar.MONTH),peti.get(Calendar.YEAR));
                 dp.getDatePicker().setMinDate(peti.getTimeInMillis());
                 dp.show();
+                txtFecha.setText(String.valueOf(Fecha));
                 break;
 
             case R.id.botonGuardar:
@@ -185,6 +190,7 @@ public class MovimientoFragment extends Fragment implements View.OnClickListener
                 EntradaOSalida=EntradaSalida.isChecked();
                 tipoGrano=txtGrano.getSelectedItem().toString();
                 insertar(Fecha , Lote ,Cantidad, EntradaOSalida, tipoGrano);
+
 
                 break;
         }

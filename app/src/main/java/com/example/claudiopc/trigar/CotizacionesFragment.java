@@ -35,10 +35,12 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
     float cotizSo;
     float cotizCe;
     String Fecha;
+    String Fecha2;
     TextView ValorTrigo;
     TextView ValorMaiz;
     TextView ValorSoja;
     TextView ValorCebada;
+    TextView Fechaa;
     MainActivity activity;
 
 
@@ -70,7 +72,7 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
         ValorMaiz = (TextView) Vista.findViewById(R.id.MaizPrecio);
        ValorSoja = (TextView) Vista.findViewById(R.id.SojaPrecio);
          ValorCebada = (TextView) Vista.findViewById(R.id.CebadaPrecio);
-
+Fechaa=(TextView) Vista.findViewById(R.id.FechaPosta);
 
         return Vista;
     }
@@ -88,6 +90,7 @@ private class BuscarDatos extends AsyncTask<String,Void,String>
     protected void onPostExecute(String datos) {
         super.onPostExecute(datos);
 
+
         ValorTrigo.setText(String.valueOf(cotiztr));
 
         ValorMaiz.setText(String.valueOf(cotizMa));
@@ -95,6 +98,7 @@ private class BuscarDatos extends AsyncTask<String,Void,String>
         ValorSoja.setText(String.valueOf(cotizSo));
 
         ValorCebada.setText(String.valueOf(cotizCe));
+        Fechaa.setText(Fecha);
 
     }
     @Override
@@ -121,6 +125,8 @@ private class BuscarDatos extends AsyncTask<String,Void,String>
         RssParserSax saxparser =
                 new RssParserSax("http://www.bolsadecereales.com/flash-cotizaciones.xml");
         Cotizacion c= saxparser.parse();
+        Fecha=c.getCotizFecha();
+
         cotiztr=c.getCotizTrigo();
         cotizMa=c.getCotizMaiz();
         cotizSo=c.getCotizSoja();

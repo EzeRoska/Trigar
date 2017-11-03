@@ -82,6 +82,17 @@
         android:textColor="@android:color/black"
         android:textColorLink="@android:color/background_dark"
         android:textSize="25sp" />
+    <TextView
+        android:id="@+id/textViewFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="270dp"
+        android:elegantTextHeight="true"
+        android:text="Fecha"
+        android:textColor="@android:color/black"
+        android:textColorLink="@android:color/background_dark"
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/edLote"

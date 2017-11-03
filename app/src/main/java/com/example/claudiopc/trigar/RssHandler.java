@@ -24,11 +24,13 @@ public class RssHandler extends DefaultHandler {
     public String cotizMaiz = "";
     public String cotizSoja = "";
     public String cotizCebadaGirasol = "";
+    public String cotizFecha="";
     boolean encontrado;
     boolean encontradoTrigo;
     boolean encontradoMaiz;
     boolean encontradoSoja;
     boolean encontradoCebadaGirasol;
+    boolean encontradoFecha;
     String cereal;
 
     public class Noticia {
@@ -56,6 +58,17 @@ public class RssHandler extends DefaultHandler {
             cereal = nombreCereal;
             buscarCereal = false;
 
+        }
+        if(encontradoFecha)
+        {
+            cotizFecha = "";
+            for (int i = 0; i < length; i++){
+
+                cotizFecha += ch[i];
+            }
+
+            encontradoFecha = false;
+            Cotizaciones.setCotizFecha(cotizFecha);
         }
         if (encontradoTrigo) {
             cotizTrigo = "";
@@ -150,6 +163,11 @@ public class RssHandler extends DefaultHandler {
         super.startElement(uri, localName, name, attributes);
         if (name.equals("nombre")) {
             buscarCereal = true;
+        }
+        if(name.equals("pubDate"))
+        {
+            encontradoFecha=true;
+
         }
 
         if (name.equals("valor")) {

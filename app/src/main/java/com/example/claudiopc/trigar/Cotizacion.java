@@ -9,7 +9,10 @@ public class Cotizacion {
     float cotizMaiz;
     float cotizSoja;
     float cotizCebada;
-
+    String cotizFecha;
+        public void setCotizFecha(String cotizFecha) {
+        this.cotizFecha = cotizFecha;
+    }
     public void setCotizTrigo(float cotizTrigo) {
         this.cotizTrigo = cotizTrigo;
     }
@@ -27,19 +30,27 @@ public class Cotizacion {
         this.cotizCebada = cotizCebada;
     }
 
-    public float getCotizTrigo() {
+   public String getCotizFecha()
+   {
+       return cotizFecha;
+   }
+    public float getCotizTrigo()
+    {
         return cotizTrigo;
     }
 
-    public float getCotizMaiz() {
+    public float getCotizMaiz()
+    {
         return cotizMaiz;
     }
 
-    public float getCotizSoja() {
+    public float getCotizSoja()
+    {
         return cotizSoja;
     }
 
-    public float getCotizCebada() {
+    public float getCotizCebada()
+    {
         return cotizCebada;
     }
 
