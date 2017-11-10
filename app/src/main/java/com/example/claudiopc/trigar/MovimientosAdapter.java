@@ -28,6 +28,19 @@ public class MovimientosAdapter extends BaseAdapter{
         return _movimientos.size();
     }
 
+    public void clearData(){
+        _movimientos.clear();
+    }
+
+    public void addData(Movimiento m){
+        _movimientos.add(m);
+    }
+
+
+    public void setData(ArrayList<Movimiento> movimientos){
+        _movimientos.clear();
+        _movimientos.addAll(movimientos);
+    }
     @Override
     public Movimiento getItem(int position) {
         return _movimientos.get(position);

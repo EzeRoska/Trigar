@@ -10,46 +10,38 @@
         android:id="@+id/btnCotizaciones"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="30dp"
+        android:backgroundTint="@android:color/holo_green_light"
         android:text="Cotizaciones"
         android:textColor="@android:color/black"
-        android:textSize="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="40dp" />
+
     <Button
         android:id="@+id/btnMovimiento"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_below="@+id/btnCotizaciones"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:backgroundTint="@android:color/holo_green_light"
         android:text="Movimiento"
         android:textColor="@android:color/black"
-        android:textSize="40sp"
-        android:layout_below="@+id/btnCotizaciones"
-        android:layout_centerHorizontal="true" />
-    <Button
-        android:id="@+id/btnNoticias"
-        android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:text="Noticias"
-        android:textColor="@android:color/black"
-        android:textSize="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@+id/btnMiBolsillo"
-        android:layout_alignRight="@+id/btnMiBolsillo"
-        android:layout_alignEnd="@+id/btnMiBolsillo"
-        android:layout_marginTop="54dp" />
+        android:textSize="40sp" />
 
     <Button
         android:id="@+id/btnMiBolsillo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="  MI BOLSILLO   "
-        android:layout_marginTop="49dp"
-        android:textSize="40dp"
-        android:layout_below="@+id/btnMovimiento"
+        android:layout_alignEnd="@+id/btnMovimiento"
         android:layout_alignRight="@+id/btnMovimiento"
-        android:layout_alignEnd="@+id/btnMovimiento" />
+        android:layout_below="@+id/btnMovimiento"
+        android:layout_marginTop="90dp"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:text="  MI BOLSILLO   "
+        android:textSize="40dp" />
 
 
 </RelativeLayout>

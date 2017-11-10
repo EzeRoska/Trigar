@@ -12,7 +12,7 @@ android:background="@drawable/trigofondo">
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
-        android:text="buscar"
+        android:text=""
         android:textColor="?attr/colorButtonNormal" />
     <ListView
         android:id="@+id/ListaMov"
@@ -31,19 +31,22 @@ android:background="@drawable/trigofondo">
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/btnvolverListaMovimiento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Volver"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="Volver" />
 
         <Button
             android:id="@+id/btnCargar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cargar "
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="Cargar " />
     </LinearLayout>
 
 
