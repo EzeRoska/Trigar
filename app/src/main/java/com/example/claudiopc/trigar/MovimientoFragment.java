@@ -67,12 +67,11 @@ Calendar hola;
         View Vista=inflater.inflate(R.layout.fragment_movimiento,container,false);
         Button Calendario = (Button) Vista.findViewById(R.id.BotonCalendario);
         Calendario.setOnClickListener(this);
-        // Button guardar=(Button)Vista.findViewById(R.id.botonGuardar);
+        // Button guardar=(Button)Vista.findViewById(R.id.botonGuardar);ffhfjhsdfhsdjfhdshfkjdshfhdfdsfhsdhfdshfhsdhdshhjhfjsdhfjsdhfhsdhfsdhffhsjkfhs HOLA ROSKITAAAAA PUTOOOOO
         //guardar.setOnClickListener(this);
         activity = (MainActivity)getActivity();
         Button btnGuardar = (Button)Vista.findViewById(R.id.botonGuardar);
         Button btnVolver = (Button)Vista.findViewById(R.id.btnVolverMovimiento);
-
         btnVolver.setOnClickListener(new View.OnClickListener() {
 
 
@@ -96,6 +95,8 @@ Calendar hola;
                 insertar(Fecha,Lote,Cantidad,EntradaOSalida,tipoGrano);
                 txtCantidad.setText("");
                 txtLote.setText("");
+                Toast toast = Toast.makeText(getContext(), "Se ingresaron correctamente: Lote " + Lote + " Cantidad: " + Cantidad + " E/S: "+ EntradaOSalida + " Tipo de grano: " + tipoGrano + " ",Toast.LENGTH_LONG);
+                toast.show();
 
             }
         });
@@ -176,12 +177,12 @@ txtFecha=(TextView) Vista.findViewById(R.id.textViewFecha);
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         peti.set(year,month,dayOfMonth);
                         Fecha = peti.get(Calendar.DAY_OF_MONTH) + "/" + peti.get(Calendar.MONTH)+ "/"+ peti.get(Calendar.YEAR);
-
+                        txtFecha.setText(String.valueOf(Fecha));
                     }
                 },peti.get(Calendar.DAY_OF_MONTH),peti.get(Calendar.MONTH),peti.get(Calendar.YEAR));
                 dp.getDatePicker().setMinDate(peti.getTimeInMillis());
                 dp.show();
-                txtFecha.setText(String.valueOf(Fecha));
+
                 break;
 
             case R.id.botonGuardar:
@@ -190,9 +191,7 @@ txtFecha=(TextView) Vista.findViewById(R.id.textViewFecha);
                 EntradaOSalida=EntradaSalida.isChecked();
                 tipoGrano=txtGrano.getSelectedItem().toString();
                 insertar(Fecha , Lote ,Cantidad, EntradaOSalida, tipoGrano);
-
-
-                break;
+   break;
         }
 
     }

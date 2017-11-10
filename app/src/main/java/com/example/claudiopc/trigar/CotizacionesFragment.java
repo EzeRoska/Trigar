@@ -34,6 +34,7 @@ public class CotizacionesFragment extends Fragment implements View.OnClickListen
     float cotizMa;
     float cotizSo;
     float cotizCe;
+    float fechaa;
     String Fecha;
     String Fecha2;
     TextView ValorTrigo;
@@ -126,12 +127,12 @@ private class BuscarDatos extends AsyncTask<String,Void,String>
                 new RssParserSax("http://www.bolsadecereales.com/flash-cotizaciones.xml");
         Cotizacion c= saxparser.parse();
         Fecha=c.getCotizFecha();
-
+        fechaa=Float.valueOf(Fecha);
         cotiztr=c.getCotizTrigo();
         cotizMa=c.getCotizMaiz();
         cotizSo=c.getCotizSoja();
         cotizCe=c.getCotizCebada();
-insertar(cotiztr,cotizMa,cotizSo,cotizCe);
+insertar(Fecha,cotiztr,cotizMa,cotizSo,cotizCe);
         //Calendar calendar = Calendar.getInstance();
         //DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //Calendar cal = Calendar.getInstance();
@@ -152,7 +153,7 @@ insertar(cotiztr,cotizMa,cotizSo,cotizCe);
         return responder;
 
     }
-    public  void insertar ( float cotiztr,float cotizMa,float cotizSo,float cotizCe) {
+    public  void insertar ( String Fecha,float cotiztr,float cotizMa,float cotizSo,float cotizCe) {
 
         if (baseDeDatosAbierta()) {
 
@@ -163,6 +164,7 @@ insertar(cotiztr,cotizMa,cotizSo,cotizCe);
             nuevoRegistro.put("CotizacionMaiz", cotizMa);
             nuevoRegistro.put("CotizacionSoja", cotizSo);
             nuevoRegistro.put("CotizacionCebada",cotizCe);
+            nuevoRegistro.put("Fecha",Fecha);
             baseDatos.insert("Cotizaciones", null, nuevoRegistro);
         }
         baseDatos.close();
