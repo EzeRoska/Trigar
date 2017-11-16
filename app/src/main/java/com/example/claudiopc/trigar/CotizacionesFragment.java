@@ -127,7 +127,6 @@ private class BuscarDatos extends AsyncTask<String,Void,String>
                 new RssParserSax("http://www.bolsadecereales.com/flash-cotizaciones.xml");
         Cotizacion c= saxparser.parse();
         Fecha=c.getCotizFecha();
-        fechaa=Float.valueOf(Fecha);
         cotiztr=c.getCotizTrigo();
         cotizMa=c.getCotizMaiz();
         cotizSo=c.getCotizSoja();

@@ -91,7 +91,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView8"
         android:layout_marginTop="150dp"
-        android:layout_marginLeft="95dp"
+        android:layout_marginLeft="85dp"
         android:text="cant"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
@@ -103,7 +103,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView8"
         android:layout_marginTop="150dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="190dp"
         android:text="cotiz"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
@@ -139,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
         android:layout_marginTop="200dp"
-        android:layout_marginLeft="95dp"
+        android:layout_marginLeft="85dp"
         android:layout_toLeftOf="@+id/editText2"
         android:layout_toStartOf="@+id/editText2"
         android:text="cant"
@@ -151,7 +151,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
         android:layout_marginTop="200dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="190dp"
         android:layout_toLeftOf="@+id/editText2"
         android:layout_toStartOf="@+id/editText2"
         android:text="cotiz"
@@ -189,7 +189,7 @@
         android:layout_alignStart="@+id/textView2"
         android:layout_below="@+id/textView9"
         android:layout_marginTop="250dp"
-        android:layout_marginLeft="95dp"
+        android:layout_marginLeft="85dp"
         android:text="cant"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
@@ -201,7 +201,7 @@
         android:layout_alignStart="@+id/textView2"
         android:layout_below="@+id/textView9"
         android:layout_marginTop="250dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="190dp"
         android:text="cotiz"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
@@ -236,7 +236,7 @@
         android:layout_alignStart="@+id/textView10"
         android:layout_below="@+id/textView10"
         android:layout_marginTop="300dp"
-        android:layout_marginLeft="95dp"
+        android:layout_marginLeft="85dp"
         android:text="cant"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
@@ -248,7 +248,7 @@
         android:layout_alignStart="@+id/textView10"
         android:layout_below="@+id/textView10"
         android:layout_marginTop="300dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="190dp"
         android:text="cotiz"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
@@ -264,7 +264,94 @@
         android:text="total"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
-
+    <TextView
+        android:id="@+id/signo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="160dp"
+        android:text="($)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/signo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="160dp"
+        android:text="($)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/signo3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="160dp"
+        android:text="($)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/signo4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="160dp"
+        android:text="($)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/signo5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="275dp"
+        android:text="($)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/signo6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="275dp"
+        android:text="($)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/signo7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="275dp"
+        android:text="($)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/signo8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="275dp"
+        android:text="($)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btnVolverMibolsillo"
